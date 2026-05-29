@@ -3,739 +3,1374 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Corvane Systems | SEO & AI Search for Self-Storage</title>
-<meta name="description" content="SEO and AI search visibility built specifically for self-storage facilities. Rank higher on Google, get recommended by ChatGPT and Perplexity, and fill more units. 100% U.S. based.">
+<title>Corvane Systems | AI Visibility for Self-Storage</title>
+<meta name="description" content="SEO and AI search visibility built specifically for self-storage facilities. Rank higher on Google, get recommended by ChatGPT, Claude, and Perplexity, and fill more units.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --black:   #0A0A0A;
-    --dark:    #111111;
-    --dark2:   #1A1A1A;
-    --gold:    #B8960C;
-    --gold-lt: #D4AD2A;
-    --gold-dim:#7A6208;
-    --cream:   #F5F0E8;
-    --cream2:  #FDFBF7;
-    --gray:    #888888;
-    --mid:     #444444;
-    --white:   #FFFFFF;
-    --border:  rgba(184,150,12,0.2);
+    --blue:       #2563EB;
+    --blue-dk:    #1D4ED8;
+    --blue-deep:  #1E3A8A;
+    --blue-lt:    #3B82F6;
+    --blue-bg:    #DBEAFE;
+
+    --green:      #22C55E;
+    --green-dk:   #16A34A;
+    --green-lt:   #4ADE80;
+    --green-bg:   #DCFCE7;
+
+    --orange:     #F97316;
+    --orange-dk:  #EA580C;
+    --orange-lt:  #FB923C;
+    --orange-bg:  #FFEDD5;
+
+    --yellow:     #FACC15;
+    --pink:       #EC4899;
+
+    --ink:        #0F172A;
+    --ink-2:      #334155;
+    --ink-3:      #64748B;
+    --ink-4:      #94A3B8;
+
+    --white:      #FFFFFF;
+    --bg:         #FFFFFF;
+    --bg-2:       #F1F5F9;
+    --bg-3:       #E2E8F0;
   }
 
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'Montserrat', sans-serif;
-    background: var(--cream2);
-    color: var(--dark);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+    font-weight: 500;
   }
 
   /* ── NAV ───────────────────────────────────────────────── */
   nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    position: sticky; top: 0; z-index: 100;
+    background: var(--white);
+    border-bottom: 1px solid rgba(15,23,42,0.06);
+    padding: 18px 5vw;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 5vw;
-    height: 70px;
-    background: rgba(10,10,10,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(184,150,12,0.15);
-    transition: background 0.3s;
+    gap: 32px;
   }
 
   .nav-logo {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 15px;
-    letter-spacing: 0.25em;
-    color: var(--white);
-    text-transform: uppercase;
-    display: flex; align-items: center; gap: 10px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 26px;
+    color: var(--ink);
     text-decoration: none;
+    letter-spacing: -0.03em;
+    display: flex; align-items: baseline; gap: 6px;
   }
-  .nav-logo span { color: var(--gold); }
+  .nav-logo span {
+    display: inline-block;
+    width: 10px; height: 10px;
+    background: var(--orange);
+    border-radius: 2px;
+    align-self: center;
+  }
 
   .nav-links {
-    display: flex; gap: 36px; list-style: none;
+    display: flex; gap: 8px; list-style: none;
+    margin-left: auto;
+    margin-right: 8px;
   }
   .nav-links a {
-    font-size: 11px; font-weight: 500; letter-spacing: 0.18em;
-    text-transform: uppercase; color: rgba(255,255,255,0.6);
-    text-decoration: none; transition: color 0.2s;
+    font-size: 15px; font-weight: 700;
+    color: var(--ink-2);
+    text-decoration: none;
+    padding: 10px 16px;
+    transition: color 0.2s;
   }
-  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover { color: var(--blue); }
+
+  .nav-right {
+    display: flex; align-items: center; gap: 12px;
+    margin-left: auto;
+  }
+
+  .nav-login {
+    font-size: 14px; font-weight: 700;
+    color: var(--ink-2);
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: 6px;
+    transition: color 0.2s, background 0.2s;
+  }
+  .nav-login:hover { color: var(--blue); background: var(--bg-2); }
 
   .nav-cta {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.15em;
-    text-transform: uppercase; color: var(--black);
-    background: var(--gold); border: none;
-    padding: 10px 22px; cursor: pointer;
-    transition: background 0.2s, transform 0.2s;
+    font-size: 15px; font-weight: 700;
+    color: var(--white);
+    background: var(--blue);
+    border: none;
+    padding: 12px 22px;
+    border-radius: 6px;
+    cursor: pointer;
     text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    white-space: nowrap;
   }
-  .nav-cta:hover { background: var(--gold-lt); transform: translateY(-1px); }
+  .nav-cta:hover { background: var(--blue-dk); transform: translateY(-1px); }
 
   /* ── HERO ──────────────────────────────────────────────── */
   #home {
-    min-height: 100vh;
-    background: var(--black);
+    background: var(--blue);
+    color: var(--white);
+    padding: 120px 5vw 200px;
+    position: relative;
+    overflow: hidden;
+    min-height: 80vh;
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
     text-align: center;
-    padding: 140px 5vw 100px;
-    position: relative;
-    overflow: hidden;
   }
 
-  .hero-grid {
-    position: absolute; inset: 0;
-    background-image:
-      linear-gradient(rgba(184,150,12,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(184,150,12,0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
-  }
-
-  .hero-glow {
+  /* Geometric background shapes */
+  .geo-shape {
     position: absolute;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(184,150,12,0.08) 0%, transparent 70%);
-    top: 50%; left: 50%; transform: translate(-50%, -50%);
     pointer-events: none;
+    z-index: 0;
   }
 
-  .hero-eyebrow {
-    font-size: 10px; font-weight: 600; letter-spacing: 0.3em;
-    text-transform: uppercase; color: var(--gold);
-    margin-bottom: 28px;
-    opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+  /* Green angular shapes on sides */
+  .geo-green-left {
+    top: 0; left: -100px;
+    width: 380px; height: 100%;
+    background: var(--green);
+    clip-path: polygon(0 0, 100% 30%, 70% 70%, 0 100%);
+    opacity: 0.95;
+  }
+  .geo-green-right {
+    top: 0; right: -120px;
+    width: 380px; height: 100%;
+    background: var(--green);
+    clip-path: polygon(30% 0, 100% 0, 100% 100%, 0 80%);
+    opacity: 0.95;
+  }
+
+  /* Wavy ribbon SVG */
+  .geo-ribbon {
+    position: absolute;
+    bottom: -40px; left: 0; right: 0;
+    width: 100%; height: 200px;
+    z-index: 1;
+    opacity: 0.8;
+  }
+
+  /* Checkered pixel patterns */
+  .geo-pixels {
+    position: absolute;
+    z-index: 0;
+  }
+  .geo-pixels-tl { top: 60px; left: 24px; }
+  .geo-pixels-br { bottom: 80px; right: 24px; }
+
+  .pixel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 12px);
+    grid-auto-rows: 12px;
+    gap: 4px;
+  }
+  .pixel { background: var(--white); }
+  .pixel.empty { background: transparent; }
+
+  /* Concentric circles in hero center */
+  .geo-circles {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px; height: 700px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 50%;
+    z-index: 0;
+  }
+  .geo-circles::before,
+  .geo-circles::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 50%;
+  }
+  .geo-circles::before { width: 500px; height: 500px; }
+  .geo-circles::after  { width: 300px; height: 300px; }
+
+  .hero-inner {
+    position: relative; z-index: 2;
+    max-width: 1000px;
   }
 
   .hero-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', sans-serif;
     font-size: clamp(48px, 7vw, 88px);
-    font-weight: 300;
-    line-height: 1.08;
+    font-weight: 900;
+    line-height: 1;
     color: var(--white);
-    letter-spacing: -0.01em;
-    max-width: 880px;
-    margin-bottom: 28px;
-    opacity: 0; animation: fadeUp 0.8s 0.4s forwards;
+    letter-spacing: -0.035em;
+    margin-bottom: 40px;
+    text-transform: capitalize;
   }
-  .hero-title em {
-    font-style: italic; color: var(--gold);
+  .hero-title .dim {
+    color: rgba(255,255,255,0.35);
   }
 
-  .hero-sub {
-    font-size: 13px; font-weight: 300; letter-spacing: 0.08em;
-    color: rgba(255,255,255,0.45);
-    max-width: 520px; line-height: 1.9;
-    margin-bottom: 52px;
-    opacity: 0; animation: fadeUp 0.8s 0.6s forwards;
+  .hero-offer {
+    font-size: clamp(17px, 1.7vw, 21px);
+    font-weight: 600;
+    color: rgba(255,255,255,0.92);
+    max-width: 680px;
+    margin: 0 auto 36px;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+  }
+  .hero-offer strong {
+    background: var(--orange);
+    color: var(--white);
+    padding: 2px 10px;
+    border-radius: 6px;
+    font-weight: 800;
+    white-space: nowrap;
   }
 
   .hero-actions {
-    display: flex; gap: 16px; align-items: center;
-    opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
+    display: flex; gap: 12px; align-items: center; justify-content: center;
+    flex-wrap: wrap;
   }
 
-  .btn-primary {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
-    text-transform: uppercase; color: var(--black);
-    background: var(--gold); border: none;
-    padding: 15px 36px; cursor: pointer;
+  .btn-white {
+    font-size: 15px; font-weight: 700;
+    color: var(--blue);
+    background: var(--white);
+    border: none;
+    padding: 16px 32px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.2s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-white:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+
+  .btn-ghost-light {
+    font-size: 15px; font-weight: 700;
+    color: var(--white);
+    background: rgba(255,255,255,0.12);
+    border: none;
+    padding: 16px 32px;
+    border-radius: 6px;
+    cursor: pointer;
     text-decoration: none;
     transition: background 0.2s, transform 0.15s;
+    backdrop-filter: blur(8px);
   }
-  .btn-primary:hover { background: var(--gold-lt); transform: translateY(-2px); }
-
-  .btn-ghost {
-    font-size: 11px; font-weight: 500; letter-spacing: 0.18em;
-    text-transform: uppercase; color: rgba(255,255,255,0.5);
-    background: transparent;
-    border: 1px solid rgba(255,255,255,0.15);
-    padding: 15px 36px; cursor: pointer;
-    text-decoration: none;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
-
-  .hero-divider {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  .btn-ghost-light:hover {
+    background: rgba(255,255,255,0.22);
+    transform: translateY(-2px);
   }
 
-  /* ── SECTION BASE ──────────────────────────────────────── */
-  section { padding: 120px 5vw; }
-
-  .section-label {
-    font-size: 10px; font-weight: 600; letter-spacing: 0.3em;
-    text-transform: uppercase; color: var(--gold);
-    margin-bottom: 16px;
+  /* ── VALUE STRIP (replaces logo bar) ──────────────────── */
+  .value-strip {
+    background: var(--white);
+    padding: 40px 5vw;
+    border-bottom: 1px solid rgba(15,23,42,0.06);
   }
 
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(34px, 4vw, 52px);
-    font-weight: 300; line-height: 1.15;
-    color: var(--dark);
-    margin-bottom: 20px;
-  }
-  .section-title em { font-style: italic; color: var(--gold); }
-
-  .section-title.light { color: var(--white); }
-
-  .section-body {
-    font-size: 13px; font-weight: 300; letter-spacing: 0.04em;
-    color: var(--gray); line-height: 1.9;
-    max-width: 560px;
-  }
-  .section-body.light { color: rgba(255,255,255,0.45); }
-
-  /* ── ABOUT ─────────────────────────────────────────────── */
-  #about {
-    background: var(--cream2);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-  }
-
-  .about-right {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
-    background: rgba(0,0,0,0.06);
-  }
-
-  .about-stat {
-    background: var(--cream2);
-    padding: 36px 30px;
-  }
-  .about-stat-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 44px; font-weight: 300;
-    color: var(--gold); line-height: 1;
-    margin-bottom: 8px;
-  }
-  .about-stat-label {
-    font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
-    text-transform: uppercase; color: var(--mid);
-    line-height: 1.5;
-  }
-
-  .about-quote {
-    grid-column: 1 / -1;
-    background: var(--dark);
-    padding: 36px 30px;
-  }
-  .about-quote p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18px; font-style: italic; font-weight: 300;
-    color: rgba(255,255,255,0.7); line-height: 1.7;
-  }
-  .about-quote p span { color: var(--gold); }
-
-  /* ── SERVICES ──────────────────────────────────────────── */
-  #services {
-    background: var(--dark);
-    position: relative;
-  }
-
-  .services-header {
-    display: flex; justify-content: space-between; align-items: flex-end;
-    margin-bottom: 64px;
-  }
-
-  .services-grid {
+  .value-strip-inner {
+    max-width: 1200px;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: rgba(184,150,12,0.1);
-  }
-
-  .service-card {
-    background: var(--dark2);
-    padding: 44px 36px;
-    position: relative;
-    transition: background 0.3s;
-    overflow: hidden;
-  }
-  .service-card::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--gold);
-    transform: scaleX(0); transform-origin: left;
-    transition: transform 0.4s;
-  }
-  .service-card:hover { background: #1E1E1E; }
-  .service-card:hover::before { transform: scaleX(1); }
-
-  .service-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 48px; font-weight: 300;
-    color: rgba(184,150,12,0.12);
-    line-height: 1; margin-bottom: 24px;
-  }
-
-  .service-name {
-    font-size: 11px; font-weight: 700; letter-spacing: 0.2em;
-    text-transform: uppercase; color: var(--white);
-    margin-bottom: 16px;
-  }
-
-  .service-desc {
-    font-size: 12px; font-weight: 300; letter-spacing: 0.03em;
-    color: rgba(255,255,255,0.4); line-height: 1.85;
-  }
-
-  .service-items {
-    margin-top: 20px;
-    list-style: none;
-  }
-  .service-items li {
-    font-size: 11px; font-weight: 400; letter-spacing: 0.04em;
-    color: rgba(255,255,255,0.35);
-    padding: 5px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    display: flex; align-items: center; gap: 8px;
-  }
-  .service-items li::before {
-    content: '—'; color: var(--gold-dim); font-size: 10px;
-  }
-
-  /* ── SHIFT / CHART ─────────────────────────────────────── */
-  #shift {
-    background: var(--black);
-    padding: 120px 5vw;
-    border-top: 1px solid rgba(184,150,12,0.08);
-  }
-
-  .shift-inner {
-    max-width: 1100px; margin: 0 auto;
-    display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: 80px;
+    gap: 24px;
     align-items: center;
   }
 
-  .shift-left h2 { color: var(--white); }
-  .shift-left .section-body { color: rgba(255,255,255,0.5); }
+  .value-item {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 14px; font-weight: 700;
+    color: var(--ink-2);
+  }
+  .value-item-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-weight: 900;
+    font-size: 16px;
+  }
+  .value-item:nth-child(1) .value-item-icon { background: var(--blue-bg); color: var(--blue); }
+  .value-item:nth-child(2) .value-item-icon { background: var(--green-bg); color: var(--green-dk); }
+  .value-item:nth-child(3) .value-item-icon { background: var(--orange-bg); color: var(--orange-dk); }
+  .value-item:nth-child(4) .value-item-icon { background: #FEF3C7; color: #B45309; }
 
-  .shift-callouts {
-    margin-top: 32px;
-    display: flex; gap: 40px;
-  }
-  .shift-stat-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 44px; font-weight: 300;
-    color: var(--gold); line-height: 1;
-    margin-bottom: 8px;
-  }
-  .shift-stat-label {
-    font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
-    text-transform: uppercase; color: rgba(255,255,255,0.55);
-    line-height: 1.5;
-  }
+  /* ── SECTION BASE ──────────────────────────────────────── */
+  section { padding: 100px 5vw; position: relative; }
+  .container { max-width: 1200px; margin: 0 auto; }
 
-  .chart-wrap {
-    background: var(--dark2);
-    border: 1px solid rgba(184,150,12,0.18);
-    padding: 40px 36px 32px;
-    position: relative;
-  }
-  .chart-wrap::before {
-    content: '';
-    position: absolute; top: 0; left: 0; width: 64px;
-    height: 1px; background: var(--gold);
-  }
-
-  .chart-header {
-    display: flex; justify-content: space-between; align-items: flex-start;
-    margin-bottom: 28px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
-  .chart-title {
-    font-size: 11px; font-weight: 700; letter-spacing: 0.2em;
-    text-transform: uppercase; color: var(--white);
-    margin-bottom: 6px;
-  }
-  .chart-sub {
-    font-size: 10px; font-weight: 400; letter-spacing: 0.08em;
-    color: rgba(255,255,255,0.35);
-  }
-
-  .chart-legend {
-    display: flex; flex-direction: column; gap: 8px; align-items: flex-end;
-  }
-  .chart-legend-item {
-    font-size: 9px; font-weight: 600; letter-spacing: 0.18em;
+  .section-eyebrow {
+    display: inline-block;
+    font-size: 14px; font-weight: 800;
+    color: var(--blue);
     text-transform: uppercase;
-    display: flex; align-items: center; gap: 8px;
-    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
   }
-  .legend-dot {
-    width: 10px; height: 2px; flex-shrink: 0;
+  .section-eyebrow.on-color { color: var(--white); opacity: 0.8; }
+
+  .section-title {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(36px, 4.8vw, 56px);
+    font-weight: 900;
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
   }
-  .legend-dot.gold { background: var(--gold); }
-  .legend-dot.gray { background: rgba(255,255,255,0.35); }
+  .section-title.light { color: var(--white); }
+  .section-title .dim { color: rgba(15,23,42,0.3); }
+  .section-title.light .dim { color: rgba(255,255,255,0.4); }
 
-  .chart-svg { width: 100%; height: auto; display: block; }
+  .section-body {
+    font-size: 17px; font-weight: 500;
+    color: var(--ink-2); line-height: 1.65;
+    max-width: 600px;
+  }
+  .section-body.light { color: rgba(255,255,255,0.85); }
+  .section-body strong { color: var(--ink); font-weight: 800; }
+  .section-body.light strong { color: var(--white); }
 
-  .chart-footer {
-    margin-top: 20px;
-    padding-top: 16px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    font-size: 9px; font-weight: 400; letter-spacing: 0.08em;
-    color: rgba(255,255,255,0.3); line-height: 1.7;
+  /* ── MISSION / ABOUT ───────────────────────────────────── */
+  #about {
+    background: var(--bg-2);
+    padding-bottom: 0;
   }
 
-  @media (max-width: 900px) {
-    .shift-inner { grid-template-columns: 1fr; gap: 48px; }
-    .shift-callouts { gap: 32px; }
-  }
-
-
-  #websites {
-    background: var(--cream2);
+  .about-grid {
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
     gap: 80px;
     align-items: center;
+    margin-bottom: 80px;
   }
 
-  .web-features {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
-    background: rgba(0,0,0,0.06);
-  }
-
-  .web-feature {
-    background: var(--cream2);
-    padding: 30px 26px;
-  }
-  .web-feature-icon {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px; font-weight: 300;
-    color: var(--gold); line-height: 1;
-    margin-bottom: 14px;
-  }
-  .web-feature-title {
-    font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
-    text-transform: uppercase; color: var(--dark);
-    margin-bottom: 10px;
-  }
-  .web-feature-body {
-    font-size: 11px; font-weight: 300; letter-spacing: 0.03em;
-    color: var(--gray); line-height: 1.8;
-  }
-
-  .web-cta-row {
-    margin-top: 32px;
-    display: flex; gap: 14px; align-items: center;
-  }
-  .btn-dark {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
-    text-transform: uppercase; color: var(--white);
-    background: var(--dark); border: none;
-    padding: 14px 32px; cursor: pointer;
-    text-decoration: none;
-    transition: background 0.2s, transform 0.15s;
-  }
-  .btn-dark:hover { background: var(--gold); color: var(--black); transform: translateY(-2px); }
-
-  .web-meta {
-    font-size: 11px; font-weight: 400; letter-spacing: 0.05em;
-    color: var(--gray); font-style: italic;
-  }
-
-  /* ── PRICING ───────────────────────────────────────────── */
-  #pricing {
-    background: var(--dark);
-  }
-
-  .pricing-header { margin-bottom: 64px; }
-
-  .pricing-card {
-    background: var(--dark2);
-    padding: 64px 56px;
-    max-width: 640px;
-    border: 1px solid rgba(184,150,12,0.18);
+  /* AI Visibility Audit dashboard illustration */
+  .storage-illo {
     position: relative;
+    aspect-ratio: 1 / 0.95;
+    max-width: 560px;
+    margin: 0 auto;
   }
-  .pricing-card::before {
+  .storage-illo-bg {
+    position: absolute;
+    top: 8%; left: 8%;
+    width: 92%; height: 92%;
+    background: var(--blue);
+    border-radius: 24px;
+    transform: rotate(-2.5deg);
+  }
+  .storage-illo-bg2 {
+    position: absolute;
+    top: 3%; left: 4%;
+    width: 94%; height: 94%;
+    background: var(--blue-lt);
+    border-radius: 24px;
+    transform: rotate(1.5deg);
+  }
+  .storage-illo-card {
+    position: relative;
+    z-index: 2;
+    width: 100%; height: 100%;
+    background: var(--white);
+    border-radius: 18px;
+    padding: 24px 24px 20px;
+    box-shadow: 0 20px 60px rgba(37,99,235,0.25);
+    display: flex; flex-direction: column;
+    gap: 16px;
+    overflow: hidden;
+  }
+
+  /* Dashboard header */
+  .dash-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--bg-2);
+  }
+  .dash-title-block {
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .dash-title {
+    font-size: 17px; font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .dash-title::before {
     content: '';
-    position: absolute; top: 0; left: 0; width: 64px;
-    height: 1px; background: var(--gold);
+    width: 8px; height: 8px;
+    background: var(--green);
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(34,197,94,0.2);
+  }
+  .dash-subtitle {
+    font-size: 11px; font-weight: 600;
+    color: var(--ink-3);
+  }
+  .dash-share-btn {
+    background: var(--ink);
+    color: var(--white);
+    font-size: 10px; font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 6px;
+    display: inline-flex; align-items: center; gap: 4px;
   }
 
-  .pricing-tag {
-    font-size: 9px; font-weight: 700; letter-spacing: 0.25em;
-    text-transform: uppercase; color: var(--gold);
-    margin-bottom: 20px;
+  /* Score row */
+  .dash-score-row {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    background: var(--bg-2);
+    border-radius: 12px;
+    padding: 14px 16px;
+    align-items: center;
+  }
+  .dash-score-main {
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .dash-score-label {
+    font-size: 10px; font-weight: 700;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .dash-score-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 30px; font-weight: 900;
+    color: var(--green-dk);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    display: flex; align-items: baseline; gap: 2px;
+  }
+  .dash-score-num span {
+    font-size: 12px; font-weight: 700;
+    color: var(--ink-4);
   }
 
-  .pricing-amount {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 72px; font-weight: 300;
-    line-height: 1; color: var(--white);
-    margin-bottom: 4px;
+  .dash-check {
+    display: flex; flex-direction: column; gap: 2px;
+    text-align: left;
   }
-  .pricing-amount sup {
-    font-size: 24px; vertical-align: top;
-    margin-top: 14px; display: inline-block;
-    color: var(--gold);
+  .dash-check-label {
+    font-size: 9px; font-weight: 700;
+    color: var(--ink-3);
   }
-
-  .pricing-period {
-    font-size: 11px; font-weight: 400; letter-spacing: 0.1em;
-    color: rgba(255,255,255,0.35); margin-bottom: 32px;
+  .dash-check-value {
+    font-size: 13px; font-weight: 800;
+    color: var(--green-dk);
+    display: flex; align-items: center; gap: 4px;
   }
-
-  .pricing-divider {
-    height: 1px; background: rgba(255,255,255,0.08);
-    margin-bottom: 28px;
+  .dash-check-value::before {
+    content: '✓';
+    color: var(--green-dk);
+    font-weight: 900;
+    font-size: 11px;
   }
 
-  .pricing-desc {
-    font-size: 12px; font-weight: 300; letter-spacing: 0.04em;
-    color: rgba(255,255,255,0.5); line-height: 1.9;
+  /* Issues by page */
+  .dash-issues-title {
+    font-size: 12px; font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    margin-bottom: 2px;
   }
 
-  .pricing-includes {
-    margin-top: 28px;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px;
-    list-style: none;
+  .dash-search {
+    background: var(--bg-2);
+    border-radius: 8px;
+    padding: 7px 10px;
+    font-size: 10px; font-weight: 600;
+    color: var(--ink-4);
+    display: flex; align-items: center; gap: 6px;
+    margin-bottom: 8px;
   }
-  .pricing-includes li {
-    font-size: 11px; font-weight: 400; letter-spacing: 0.04em;
-    color: rgba(255,255,255,0.55);
-    padding: 6px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    display: flex; align-items: center; gap: 10px;
-  }
-  .pricing-includes li::before {
-    content: '—'; color: var(--gold); font-size: 11px;
-  }
-
-  .pricing-note {
-    margin-top: 36px;
-    font-size: 11px; font-weight: 400; letter-spacing: 0.06em;
-    color: rgba(255,255,255,0.3); font-style: italic;
+  .dash-search::before {
+    content: '';
+    width: 10px; height: 10px;
+    border: 1.5px solid var(--ink-4);
+    border-radius: 50%;
+    flex-shrink: 0;
   }
 
-  /* ── WHY US ─────────────────────────────────────────────── */
-  #why {
-    background: var(--cream2);
-    padding: 120px 5vw;
+  .dash-table {
+    display: flex; flex-direction: column;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--bg-2);
+  }
+  .dash-table-head {
+    display: grid;
+    grid-template-columns: 1fr 70px 50px;
+    gap: 8px;
+    padding: 8px 12px;
+    background: var(--bg-2);
+    font-size: 9px; font-weight: 800;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .dash-row {
+    display: grid;
+    grid-template-columns: 1fr 70px 50px;
+    gap: 8px;
+    padding: 8px 12px;
+    border-top: 1px solid var(--bg-2);
+    align-items: center;
+    background: var(--white);
+  }
+  .dash-row-page {
+    font-size: 10px; font-weight: 600;
+    color: var(--ink-2);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .dash-row-page span { color: var(--ink-4); }
+  .dash-row-score {
+    font-size: 11px; font-weight: 800;
+    color: var(--green-dk);
+    text-align: right;
+  }
+  .dash-row-score.med { color: #B45309; }
+  .dash-row-issues {
+    font-size: 11px; font-weight: 700;
+    color: var(--ink-2);
+    text-align: right;
   }
 
-  .why-header { margin-bottom: 72px; max-width: 640px; }
-
-  .why-grid {
+  /* Stat band */
+  .stat-band-wrap {
+    position: relative;
+    padding-top: 60px;
+    padding-bottom: 0;
+  }
+  .stat-band-bg {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 60%;
+    background: var(--green);
+  }
+  .stat-band {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    background: rgba(0,0,0,0.07);
-    margin-bottom: 72px;
+    gap: 20px;
+    padding: 0 0;
+  }
+  .stat-card {
+    background: linear-gradient(180deg, #94A3B8 0%, var(--blue) 80%);
+    border-radius: 16px;
+    padding: 40px 32px;
+    text-align: center;
+    color: var(--white);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  }
+  .stat-num {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(48px, 5vw, 64px);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 10px;
+  }
+  .stat-label {
+    font-size: 15px; font-weight: 700;
+    letter-spacing: -0.01em;
   }
 
-  .why-card {
-    background: var(--white);
-    padding: 48px 36px;
-    position: relative;
+  /* ── WHAT WE DO (green section) ────────────────────────── */
+  #what-we-do {
+    background: var(--green);
+    padding-top: 100px;
+    padding-bottom: 100px;
+    overflow: hidden;
   }
 
-  .why-icon {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 40px; font-weight: 300;
-    color: var(--gold); margin-bottom: 20px; line-height: 1;
-  }
-
-  .why-card-title {
-    font-size: 11px; font-weight: 700; letter-spacing: 0.2em;
-    text-transform: uppercase; color: var(--dark);
-    margin-bottom: 14px;
-  }
-
-  .why-card-body {
-    font-size: 12px; font-weight: 300; letter-spacing: 0.03em;
-    color: var(--gray); line-height: 1.9;
-  }
-
-  .why-statement {
-    background: var(--dark);
-    padding: 72px 5vw;
+  .wwd-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 80px;
     align-items: center;
   }
 
-  .why-statement-left h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(30px, 3.5vw, 46px);
-    font-weight: 300; line-height: 1.2;
-    color: var(--white); margin-bottom: 20px;
+  .wwd-title {
+    color: var(--white);
   }
-  .why-statement-left h3 em { color: var(--gold); font-style: italic; }
+  .wwd-body {
+    color: rgba(255,255,255,0.92);
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.65;
+    max-width: 540px;
+  }
+  .wwd-body strong { color: var(--white); font-weight: 800; }
 
-  .why-statement-right {
-    display: flex; flex-direction: column; gap: 24px;
+  /* Phone illustration showing AI search */
+  .phone-illo {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .phone-illo-bg {
+    position: absolute;
+    bottom: 10%; right: 10%;
+    width: 60%; height: 70%;
+    background: var(--pink);
+    border-radius: 24px;
+    transform: rotate(-6deg);
+    opacity: 0.9;
+  }
+  .phone-illo-pixels {
+    position: absolute;
+    top: 10%; left: 5%;
+    display: grid;
+    grid-template-columns: repeat(3, 14px);
+    grid-auto-rows: 14px;
+    gap: 4px;
+  }
+  .phone-illo-pixels .pixel { background: var(--white); }
+
+  .phone {
+    position: relative;
+    z-index: 2;
+    width: 75%;
+    aspect-ratio: 9/19;
+    background: var(--ink);
+    border-radius: 28px;
+    padding: 8px;
+    margin: 0 auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    transform: rotate(-4deg);
+  }
+  .phone-screen {
+    background: var(--white);
+    border-radius: 22px;
+    height: 100%;
+    padding: 16px 12px;
+    overflow: hidden;
+    position: relative;
+  }
+  .phone-header {
+    font-size: 9px; font-weight: 700;
+    color: var(--ink-3);
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .phone-search {
+    background: var(--bg-2);
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 10px; font-weight: 600;
+    color: var(--ink-2);
+    margin-bottom: 12px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .phone-search::before {
+    content: '';
+    width: 10px; height: 10px;
+    border: 1.5px solid var(--ink-3);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .phone-ai-result {
+    background: linear-gradient(180deg, #EFF6FF, #DBEAFE);
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 8px;
+    border: 1px solid var(--blue-bg);
+  }
+  .phone-ai-label {
+    font-size: 8px; font-weight: 800;
+    color: var(--blue);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+    display: flex; align-items: center; gap: 4px;
+  }
+  .phone-ai-label::before {
+    content: '✦';
+    color: var(--orange);
+  }
+  .phone-ai-text {
+    font-size: 9px;
+    color: var(--ink-2);
+    line-height: 1.4;
+  }
+  .phone-ai-text strong {
+    color: var(--ink);
+    font-weight: 800;
+    background: #FEF3C7;
+    padding: 0 2px;
+    border-radius: 2px;
+  }
+  .phone-result-card {
+    background: var(--bg-2);
+    border-radius: 6px;
+    padding: 8px;
+    margin-bottom: 6px;
+  }
+  .phone-result-title {
+    font-size: 9px; font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .phone-result-meta {
+    font-size: 7px; font-weight: 600;
+    color: var(--ink-3);
+  }
+  .phone-result-meta span { color: var(--orange-dk); }
+
+  /* ── PILLARS / SERVICES ────────────────────────────────── */
+  #services {
+    background: var(--white);
   }
 
-  .why-point {
-    display: flex; gap: 20px; align-items: flex-start;
+  .services-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+  .services-header .section-body { margin: 0 auto; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
   }
 
-  .why-point-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px; font-weight: 300;
-    color: var(--gold); line-height: 1;
-    flex-shrink: 0; width: 32px;
+  .service-card {
+    background: var(--white);
+    border: 2px solid var(--bg-2);
+    border-radius: 16px;
+    padding: 32px 28px;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    display: flex; flex-direction: column;
+  }
+  .service-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--blue);
+    box-shadow: 0 12px 32px rgba(37,99,235,0.12);
   }
 
-  .why-point-text {
-    font-size: 12px; font-weight: 300; letter-spacing: 0.04em;
-    color: rgba(255,255,255,0.5); line-height: 1.85;
+  .service-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    font-size: 18px; font-weight: 900;
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+  }
+  .service-card:nth-child(1) .service-num { background: var(--blue); color: var(--white); }
+  .service-card:nth-child(2) .service-num { background: var(--orange); color: var(--white); }
+  .service-card:nth-child(3) .service-num { background: var(--green); color: var(--white); }
+  .service-card:nth-child(4) .service-num { background: var(--ink); color: var(--white); }
+
+  .service-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px; font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+    line-height: 1.15;
   }
 
-  .why-point-text strong {
-    display: block; font-size: 11px; font-weight: 600;
-    letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--white); margin-bottom: 6px;
+  .service-desc {
+    font-size: 14px; font-weight: 500;
+    color: var(--ink-2); line-height: 1.55;
+    margin-bottom: 20px;
+  }
+
+  .service-items {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 6px;
+    margin-top: auto;
+  }
+  .service-items li {
+    font-size: 13px; font-weight: 600;
+    color: var(--ink-2);
+    display: flex; align-items: flex-start; gap: 8px;
+    line-height: 1.4;
+  }
+  .service-items li::before {
+    content: '→';
+    color: var(--blue);
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+
+  /* ── SHIFT / DATA SECTION ──────────────────────────────── */
+  #shift {
+    background: var(--ink);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shift-orange-blob {
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    background: var(--orange);
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.25;
+    pointer-events: none;
+  }
+
+  .shift-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    position: relative; z-index: 2;
+  }
+
+  .shift-eyebrow {
+    color: var(--orange);
+    opacity: 1;
+  }
+
+  .shift-title { color: var(--white); }
+
+  .shift-stat-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .shift-stat {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 28px 24px;
+  }
+  .shift-stat.up { transform: translateY(20px); border-color: var(--green); }
+  .shift-stat.down { border-color: rgba(255,255,255,0.15); }
+
+  .shift-stat-trend {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12px; font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+  }
+  .shift-stat.up .shift-stat-trend { background: var(--green); color: var(--ink); }
+  .shift-stat.down .shift-stat-trend { background: rgba(255,255,255,0.1); color: var(--ink-4); }
+
+  .shift-stat-num {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(36px, 4.5vw, 52px);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+  }
+  .shift-stat.up .shift-stat-num { color: var(--green-lt); }
+  .shift-stat.down .shift-stat-num { color: var(--white); }
+
+  .shift-stat-label {
+    font-size: 13px; font-weight: 600;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+
+  .shift-stat-source {
+    font-size: 11px; font-weight: 600;
+    color: rgba(255,255,255,0.4);
+    padding-top: 12px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  /* ── WEBSITES ──────────────────────────────────────────── */
+  #websites {
+    background: var(--bg-2);
+  }
+
+  .websites-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  /* Browser mockup illustration */
+  .browser-illo {
+    position: relative;
+    aspect-ratio: 1.2 / 1;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+  .browser-illo-shape {
+    position: absolute;
+    top: 8%; right: 5%;
+    width: 75%; height: 80%;
+    background: var(--orange);
+    border-radius: 24px;
+    transform: rotate(4deg);
+  }
+  .browser-illo-pixels {
+    position: absolute;
+    bottom: 8%; left: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 12px);
+    grid-auto-rows: 12px;
+    gap: 4px;
+  }
+  .browser-illo-pixels .pixel { background: var(--ink); }
+
+  .browser {
+    position: relative; z-index: 2;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(15,23,42,0.18);
+    overflow: hidden;
+    width: 85%;
+    margin-left: auto;
+  }
+  .browser-bar {
+    background: var(--bg-2);
+    padding: 10px 12px;
+    display: flex; align-items: center; gap: 6px;
+    border-bottom: 1px solid var(--bg-3);
+  }
+  .browser-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .browser-dot:nth-child(1) { background: #EF4444; }
+  .browser-dot:nth-child(2) { background: #FACC15; }
+  .browser-dot:nth-child(3) { background: var(--green); }
+  .browser-url {
+    flex: 1;
+    margin-left: 8px;
+    background: var(--white);
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 10px; font-weight: 600;
+    color: var(--ink-3);
+  }
+  .browser-content {
+    padding: 20px 16px;
+    background: var(--white);
+  }
+  .browser-hero {
+    background: linear-gradient(135deg, var(--blue), var(--blue-lt));
+    border-radius: 8px;
+    padding: 18px;
+    color: var(--white);
+    margin-bottom: 14px;
+  }
+  .browser-hero-title {
+    font-size: 14px; font-weight: 800;
+    margin-bottom: 4px;
+    letter-spacing: -0.02em;
+  }
+  .browser-hero-sub {
+    font-size: 10px; font-weight: 500;
+    opacity: 0.9;
+  }
+  .browser-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+  }
+  .browser-tile {
+    background: var(--bg-2);
+    border-radius: 6px;
+    padding: 10px 8px;
+  }
+  .browser-tile-icon {
+    width: 18px; height: 18px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+  }
+  .browser-tile:nth-child(1) .browser-tile-icon { background: var(--orange); }
+  .browser-tile:nth-child(2) .browser-tile-icon { background: var(--green); }
+  .browser-tile:nth-child(3) .browser-tile-icon { background: var(--blue); }
+  .browser-tile-line {
+    height: 4px; border-radius: 2px;
+    background: var(--bg-3);
+    margin-bottom: 3px;
+  }
+  .browser-tile-line.short { width: 60%; }
+
+  .web-features {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .web-feature {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 14px 16px;
+    border: 1px solid var(--bg-3);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .web-feature-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+    flex-shrink: 0;
+  }
+  .web-feature-text {
+    font-size: 13px; font-weight: 700;
+    color: var(--ink);
+  }
+
+  .web-cta-row {
+    margin-top: 28px;
+    display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+  }
+
+  .btn-orange {
+    font-size: 15px; font-weight: 700;
+    color: var(--white);
+    background: var(--orange);
+    border: none;
+    padding: 14px 28px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-orange:hover { background: var(--orange-dk); transform: translateY(-2px); }
+
+  .web-meta {
+    font-size: 14px; font-weight: 600;
+    color: var(--ink-3);
+  }
+
+  /* ── PRICING ───────────────────────────────────────────── */
+  #pricing {
+    background: var(--white);
+    text-align: center;
+  }
+
+  .pricing-header { margin-bottom: 56px; }
+  .pricing-header .section-body { margin: 0 auto; }
+
+  .pricing-card {
+    max-width: 680px;
+    margin: 0 auto;
+    background: var(--blue);
+    border-radius: 24px;
+    padding: 56px 48px;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+    box-shadow: 0 20px 60px rgba(37,99,235,0.25);
+  }
+
+  .pricing-card-bg {
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 360px; height: 360px;
+    background: var(--green);
+    border-radius: 50%;
+    opacity: 0.25;
+    pointer-events: none;
+  }
+
+  .pricing-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 800;
+    color: var(--ink);
+    background: var(--yellow);
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 24px;
+    position: relative; z-index: 2;
+  }
+
+  .pricing-price-row {
+    display: flex; align-items: baseline; gap: 14px;
+    margin-bottom: 12px;
+    position: relative; z-index: 2;
+  }
+
+  .pricing-amount {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(64px, 8vw, 96px);
+    font-weight: 900;
+    line-height: 1;
+    color: var(--white);
+    letter-spacing: -0.04em;
+  }
+  .pricing-amount sup {
+    font-size: 40px; font-weight: 700;
+    vertical-align: top;
+    margin-top: 18px;
+    display: inline-block;
+    color: rgba(255,255,255,0.7);
+  }
+  .pricing-period {
+    font-size: 18px; font-weight: 700;
+    color: rgba(255,255,255,0.8);
+  }
+
+  .pricing-tagline {
+    font-size: 16px; font-weight: 500;
+    color: rgba(255,255,255,0.92);
+    line-height: 1.55;
+    margin-bottom: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    position: relative; z-index: 2;
+  }
+
+  .pricing-includes {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 24px;
+    margin-bottom: 32px;
+    position: relative; z-index: 2;
+  }
+  .pricing-includes li {
+    font-size: 14px; font-weight: 700;
+    color: var(--white);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .pricing-includes li::before {
+    content: '✓';
+    flex-shrink: 0;
+    width: 22px; height: 22px;
+    background: var(--green);
+    color: var(--ink);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900;
+    font-size: 13px;
+  }
+
+  .pricing-footer {
+    display: flex; flex-wrap: wrap; gap: 12px 20px;
+    font-size: 13px; font-weight: 700;
+    color: rgba(255,255,255,0.75);
+    position: relative; z-index: 2;
+  }
+  .pricing-footer span { display: flex; align-items: center; gap: 6px; }
+  .pricing-footer span::before { content: '★'; color: var(--yellow); }
+
+  /* ── CTA PANEL ─────────────────────────────────────────── */
+  #cta {
+    background: var(--orange);
+    color: var(--white);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .cta-pixels {
+    position: absolute;
+    top: 20px; right: 24px;
+    display: grid;
+    grid-template-columns: repeat(4, 12px);
+    grid-auto-rows: 12px;
+    gap: 4px;
+    opacity: 0.6;
+  }
+  .cta-pixels .pixel { background: var(--white); }
+
+  .cta-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 48px;
+    align-items: center;
+    position: relative; z-index: 2;
+  }
+
+  .cta-title {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(36px, 4.8vw, 56px);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--white);
+    margin-bottom: 18px;
+  }
+  .cta-title .dim { color: rgba(255,255,255,0.45); }
+
+  .cta-body {
+    font-size: 17px; font-weight: 500;
+    color: rgba(255,255,255,0.92);
+    line-height: 1.55;
+    max-width: 560px;
+  }
+
+  .cta-buttons {
+    display: flex; flex-direction: column; gap: 12px;
   }
 
   /* ── CONTACT ───────────────────────────────────────────── */
   #contact {
-    background: var(--black);
-    text-align: center;
-    padding: 140px 5vw;
+    background: var(--bg-2);
   }
 
-  .contact-inner { max-width: 600px; margin: 0 auto; }
-
-  .contact-form {
-    margin-top: 56px;
-    display: flex; flex-direction: column; gap: 2px;
-    text-align: left;
+  .contact-card {
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: 24px;
+    padding: 56px 56px;
+    box-shadow: 0 20px 60px rgba(15,23,42,0.08);
+    border: 1px solid var(--bg-3);
   }
 
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .contact-header { text-align: center; margin-bottom: 36px; }
+  .contact-header .section-body { margin: 0 auto; font-size: 16px; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 18px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+
+  .form-field { display: flex; flex-direction: column; gap: 6px; }
+  .form-field label {
+    font-size: 13px; font-weight: 800;
+    color: var(--ink);
+  }
 
   .form-field input,
   .form-field textarea,
   .form-field select {
     width: 100%;
-    background: var(--dark2);
-    border: none;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    padding: 20px 20px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 12px; font-weight: 300; letter-spacing: 0.06em;
-    color: var(--white);
+    background: var(--bg-2);
+    border: 2px solid var(--bg-2);
+    padding: 14px 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px; font-weight: 600;
+    color: var(--ink);
     outline: none;
+    border-radius: 8px;
     transition: border-color 0.2s, background 0.2s;
     resize: none;
     appearance: none;
     -webkit-appearance: none;
-    border-radius: 0;
   }
   .form-field select {
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M1 1l4 4 4-4' stroke='%23B8960C' stroke-width='1' fill='none'/></svg>");
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%2364748B' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
     background-repeat: no-repeat;
-    background-position: right 20px center;
-    color: rgba(255,255,255,0.6);
+    background-position: right 16px center;
+    padding-right: 44px;
     cursor: pointer;
-  }
-  .form-field select option {
-    background: var(--dark2);
-    color: var(--white);
   }
   .form-field input::placeholder,
   .form-field textarea::placeholder {
-    color: rgba(255,255,255,0.2);
-    letter-spacing: 0.1em;
-    font-size: 10px;
-    text-transform: uppercase;
+    color: var(--ink-4);
+    font-weight: 500;
   }
   .form-field input:focus,
   .form-field textarea:focus,
   .form-field select:focus {
-    background: #1E1E1E;
-    border-bottom-color: var(--gold);
+    background: var(--white);
+    border-color: var(--blue);
   }
 
   .form-submit {
-    margin-top: 2px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 11px; font-weight: 600; letter-spacing: 0.22em;
-    text-transform: uppercase;
-    background: var(--gold); color: var(--black);
-    border: none; padding: 20px;
+    margin-top: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px; font-weight: 800;
+    background: var(--blue); color: var(--white);
+    border: none;
+    padding: 18px;
+    border-radius: 8px;
     cursor: pointer;
     transition: background 0.2s, transform 0.15s;
+    letter-spacing: -0.01em;
   }
-  .form-submit:hover { background: var(--gold-lt); transform: translateY(-1px); }
+  .form-submit:hover {
+    background: var(--blue-dk);
+    transform: translateY(-1px);
+  }
 
   /* ── FOOTER ────────────────────────────────────────────── */
   footer {
-    background: var(--black);
-    border-top: 1px solid rgba(184,150,12,0.12);
+    background: var(--ink);
+    color: var(--white);
     padding: 40px 5vw;
     display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
   }
 
   .footer-logo {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 12px; font-weight: 700; letter-spacing: 0.25em;
-    text-transform: uppercase; color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 22px; font-weight: 900;
+    color: var(--white);
+    display: flex; align-items: baseline; gap: 6px;
+    letter-spacing: -0.03em;
   }
-  .footer-logo span { color: var(--gold); }
-
-  .footer-copy {
-    font-size: 10px; font-weight: 400; letter-spacing: 0.12em;
-    color: rgba(255,255,255,0.2);
+  .footer-logo span {
+    display: inline-block;
+    width: 10px; height: 10px;
+    background: var(--orange);
+    border-radius: 2px;
+    align-self: center;
   }
 
-  .footer-tagline {
-    font-size: 10px; font-weight: 400; letter-spacing: 0.12em;
-    color: rgba(255,255,255,0.2); font-style: italic;
+  .footer-copy, .footer-tagline {
+    font-size: 13px; font-weight: 600;
+    color: rgba(255,255,255,0.6);
   }
 
   /* ── ANIMATIONS ────────────────────────────────────────── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
   .reveal {
-    opacity: 0; transform: translateY(30px);
+    opacity: 0; transform: translateY(24px);
     transition: opacity 0.7s ease, transform 0.7s ease;
   }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
   /* ── RESPONSIVE ────────────────────────────────────────── */
-  @media (max-width: 900px) {
-    #about { grid-template-columns: 1fr; gap: 48px; }
-    #websites { grid-template-columns: 1fr; gap: 48px; }
+  @media (max-width: 960px) {
+    .nav-links { display: none; }
+    .nav-login { padding: 8px 10px; font-size: 13px; }
+    .value-strip-inner { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .about-grid,
+    .wwd-grid,
+    .shift-grid,
+    .websites-grid,
+    .cta-grid { grid-template-columns: 1fr; gap: 48px; }
     .services-grid { grid-template-columns: 1fr 1fr; }
-    .services-header { flex-direction: column; align-items: flex-start; gap: 16px; }
-    .why-grid { grid-template-columns: 1fr 1fr; }
-    .why-statement { grid-template-columns: 1fr; gap: 48px; }
-    .pricing-includes { grid-template-columns: 1fr; }
-    .pricing-card { padding: 48px 32px; }
+    .stat-band { grid-template-columns: 1fr; }
+    .shift-stat.up { transform: translateY(0); }
+    .geo-green-left, .geo-green-right { display: none; }
   }
   @media (max-width: 600px) {
-    .services-grid { grid-template-columns: 1fr; }
-    .web-features { grid-template-columns: 1fr; }
-    .why-grid { grid-template-columns: 1fr; }
+    section { padding: 70px 5vw; }
+    #home { padding: 80px 5vw 140px; }
+    .pricing-card,
+    .contact-card { padding: 40px 28px; }
+    .pricing-includes { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
-    .nav-links { display: none; }
-    footer { flex-direction: column; gap: 12px; text-align: center; }
+    .web-features { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    .value-strip-inner { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; }
   }
 </style>
 </head>
@@ -743,365 +1378,465 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#home" class="nav-logo">Corvane<span>.</span></a>
+  <a href="#home" class="nav-logo">Corvane<span></span></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#websites">Websites</a></li>
     <li><a href="#pricing">Pricing</a></li>
-    <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="#contact" class="nav-cta">Get Started</a>
+  <div class="nav-right">
+    <a href="#login" class="nav-login">Login</a>
+    <a href="#contact" class="nav-cta">Free AI Audit</a>
+  </div>
 </nav>
 
 <!-- HERO -->
 <section id="home">
-  <div class="hero-grid"></div>
-  <div class="hero-glow"></div>
-  <p class="hero-eyebrow">SEO & AI Search for Self-Storage</p>
-  <h1 class="hero-title">AI Visibility for<br><em>Self-Storage.</em></h1>
-  <p class="hero-sub">Corvane Systems puts self-storage operators inside AI language model suggestions like ChatGPT and at the top of Google to capture tenants everywhere they search. Higher rankings. More leads. More units rented.</p>
-  <div class="hero-actions">
-    <a href="#contact" class="btn-primary">Get Started</a>
-    <a href="#services" class="btn-ghost">See What We Do</a>
-  </div>
-  <div class="hero-divider"></div>
-</section>
+  <div class="geo-shape geo-green-left"></div>
+  <div class="geo-shape geo-green-right"></div>
+  <div class="geo-circles"></div>
 
-<!-- THE SHIFT / CHART -->
-<section id="shift">
-  <div class="shift-inner">
-    <div class="shift-left reveal">
-      <p class="section-label">The Shift</p>
-      <h2 class="section-title light">Google is shrinking.<br><em>AI is exploding.</em></h2>
-      <p class="section-body light" style="margin-bottom: 16px;">For the first time, Google searches per U.S. user are declining year over year — while AI tools like ChatGPT and Perplexity are growing at a rate the search industry has never seen before.</p>
-      <p class="section-body light">Renters are still looking for storage. They're just looking in new places. Facilities that show up in both worlds will fill units. Facilities that only show up in one won't.</p>
-      <div class="shift-callouts">
-        <div>
-          <div class="shift-stat-num">−20%</div>
-          <div class="shift-stat-label">U.S. Google<br>searches per user</div>
-        </div>
-        <div>
-          <div class="shift-stat-num">+81%</div>
-          <div class="shift-stat-label">AI chatbot<br>traffic YoY</div>
-        </div>
-        <div>
-          <div class="shift-stat-num">+357%</div>
-          <div class="shift-stat-label">AI referral<br>traffic YoY</div>
-        </div>
-      </div>
+  <div class="geo-pixels geo-pixels-tl">
+    <div class="pixel-grid">
+      <div class="pixel"></div><div class="pixel empty"></div><div class="pixel"></div><div class="pixel empty"></div>
+      <div class="pixel empty"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel empty"></div>
+      <div class="pixel"></div><div class="pixel"></div><div class="pixel empty"></div><div class="pixel"></div>
     </div>
+  </div>
+  <div class="geo-pixels geo-pixels-br">
+    <div class="pixel-grid">
+      <div class="pixel empty"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div>
+      <div class="pixel"></div><div class="pixel"></div><div class="pixel empty"></div><div class="pixel"></div>
+      <div class="pixel"></div><div class="pixel empty"></div><div class="pixel"></div><div class="pixel"></div>
+    </div>
+  </div>
 
-    <div class="chart-wrap reveal">
-      <div class="chart-header">
-        <div>
-          <div class="chart-title">Search Behavior, 2024 → 2025</div>
-          <div class="chart-sub">Relative traffic index, U.S. users</div>
-        </div>
-        <div class="chart-legend">
-          <div class="chart-legend-item"><span class="legend-dot gray"></span> Google search</div>
-          <div class="chart-legend-item"><span class="legend-dot gold"></span> AI chatbots</div>
-        </div>
-      </div>
-
-      <svg class="chart-svg" viewBox="0 0 560 280" xmlns="http://www.w3.org/2000/svg" aria-label="Chart showing declining Google search use and rising AI chatbot use 2024 to 2025">
-        <!-- Y-axis grid lines -->
-        <g stroke="rgba(255,255,255,0.05)" stroke-width="1">
-          <line x1="50" y1="40"  x2="540" y2="40"/>
-          <line x1="50" y1="90"  x2="540" y2="90"/>
-          <line x1="50" y1="140" x2="540" y2="140"/>
-          <line x1="50" y1="190" x2="540" y2="190"/>
-          <line x1="50" y1="240" x2="540" y2="240"/>
-        </g>
-
-        <!-- Y-axis labels -->
-        <g fill="rgba(255,255,255,0.3)" font-family="Montserrat, sans-serif" font-size="9" font-weight="500" letter-spacing="0.1em">
-          <text x="40" y="44"  text-anchor="end">200</text>
-          <text x="40" y="94"  text-anchor="end">150</text>
-          <text x="40" y="144" text-anchor="end">100</text>
-          <text x="40" y="194" text-anchor="end">50</text>
-          <text x="40" y="244" text-anchor="end">0</text>
-        </g>
-
-        <!-- X-axis labels (quarters) -->
-        <g fill="rgba(255,255,255,0.4)" font-family="Montserrat, sans-serif" font-size="9" font-weight="600" letter-spacing="0.15em" text-anchor="middle">
-          <text x="80"  y="265">Q1'24</text>
-          <text x="172" y="265">Q2'24</text>
-          <text x="264" y="265">Q3'24</text>
-          <text x="356" y="265">Q4'24</text>
-          <text x="448" y="265">Q2'25</text>
-          <text x="528" y="265">Q4'25</text>
-        </g>
-
-        <!-- X and Y axis lines -->
-        <line x1="50" y1="240" x2="540" y2="240" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
-        <line x1="50" y1="40"  x2="50"  y2="240" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
-
-        <!-- Google search line (descending: 100 -> 80 index) -->
-        <path d="M 80 140 L 172 144 L 264 148 L 356 152 L 448 156 L 528 160"
-              fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-
-        <!-- Subtle area under Google line -->
-        <path d="M 80 140 L 172 144 L 264 148 L 356 152 L 448 156 L 528 160 L 528 240 L 80 240 Z"
-              fill="rgba(255,255,255,0.04)"/>
-
-        <!-- AI chatbot line (steeply rising: 100 -> ~181 index, +81%) -->
-        <path d="M 80 140 L 172 128 L 264 110 L 356 92 L 448 74 L 528 59"
-              fill="none" stroke="#B8960C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-
-        <!-- Area under AI line -->
-        <defs>
-          <linearGradient id="aiGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#B8960C" stop-opacity="0.18"/>
-            <stop offset="100%" stop-color="#B8960C" stop-opacity="0"/>
-          </linearGradient>
-        </defs>
-        <path d="M 80 140 L 172 128 L 264 110 L 356 92 L 448 74 L 528 59 L 528 240 L 80 240 Z"
-              fill="url(#aiGrad)"/>
-
-        <!-- Data points on AI line -->
-        <g fill="#B8960C">
-          <circle cx="80"  cy="140" r="3"/>
-          <circle cx="172" cy="128" r="3"/>
-          <circle cx="264" cy="110" r="3"/>
-          <circle cx="356" cy="92"  r="3"/>
-          <circle cx="448" cy="74"  r="3"/>
-          <circle cx="528" cy="59"  r="4"/>
-        </g>
-
-        <!-- Data points on Google line -->
-        <g fill="rgba(255,255,255,0.5)">
-          <circle cx="80"  cy="140" r="2.5"/>
-          <circle cx="172" cy="144" r="2.5"/>
-          <circle cx="264" cy="148" r="2.5"/>
-          <circle cx="356" cy="152" r="2.5"/>
-          <circle cx="448" cy="156" r="2.5"/>
-          <circle cx="528" cy="160" r="2.5"/>
-        </g>
-
-        <!-- End labels -->
-        <g font-family="Montserrat, sans-serif" font-weight="700" letter-spacing="0.05em">
-          <text x="540" y="56" fill="#B8960C" font-size="11">+81%</text>
-          <text x="540" y="164" fill="rgba(255,255,255,0.55)" font-size="11">−20%</text>
-        </g>
-      </svg>
-
-      <div class="chart-footer">
-        Sources: SparkToro / Datos (U.S. desktop searches per user, 2024–2025); OneLittleWeb 24-month chatbot vs. search engine traffic study (Apr 2024 – Mar 2025); Search Engine Land / Similarweb on AI referral growth. Chart indexed to 100 at Q1 2024 for illustrative comparison.
-      </div>
+  <div class="hero-inner">
+    <h1 class="hero-title">
+      AI Visibility <span class="dim">for</span><br>Self-Storage
+    </h1>
+    <p class="hero-offer">Get a <strong>Free AI Visibility Audit</strong> of your self-storage business. See exactly how your facility shows up across Google, ChatGPT, Claude, and Perplexity today — and what's missing.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-white">Free AI Audit →</a>
+      <a href="#services" class="btn-ghost-light">See What We Do</a>
     </div>
   </div>
 </section>
+
+<!-- VALUE STRIP -->
+<div class="value-strip">
+  <div class="value-strip-inner">
+    <div class="value-item">
+      <div class="value-item-icon">★</div>
+      <div>Built for self-storage operators</div>
+    </div>
+    <div class="value-item">
+      <div class="value-item-icon">✓</div>
+      <div>No long-term contracts</div>
+    </div>
+    <div class="value-item">
+      <div class="value-item-icon">↑</div>
+      <div>Ranks on Google + AI platforms</div>
+    </div>
+    <div class="value-item">
+      <div class="value-item-icon">$</div>
+      <div>Flat $299/month pricing</div>
+    </div>
+  </div>
+</div>
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="about-left reveal">
-    <p class="section-label">Who We Are</p>
-    <h2 class="section-title">Search visibility built for<br><em>self-storage.</em></h2>
-    <p class="section-body" style="margin-bottom: 20px;">Corvane Systems is a specialized SEO and AI search agency built exclusively for the self-storage industry. We help facility operators rank higher in local search, dominate "storage near me" queries, and get recommended by the AI tools that more renters use every month to find a unit.</p>
-    <p class="section-body" style="margin-bottom: 20px;">Every month, we publish 30 SEO-optimized articles to your site, sharpen your technical SEO, strengthen your Google Business Profile, and structure your content so platforms like ChatGPT, Perplexity, and Google's AI Overviews understand and recommend your facility.</p>
-    <p class="section-body">No long-term contracts. No punitive cancellation terms. Just measurable search growth, month over month.</p>
+  <div class="container">
+    <div class="about-grid">
+      <div class="reveal">
+        <span class="section-eyebrow">Our Mission</span>
+        <h2 class="section-title">We Make Self-Storage <span class="dim">Visible Across</span> AI &amp; Search.</h2>
+        <p class="section-body" style="margin-bottom: 16px;">Corvane Systems is a specialized SEO and AI search agency built exclusively for the self-storage industry. We help facility operators rank higher in local search, dominate "storage near me" queries, and get recommended by the AI tools more renters use every month to find a unit.</p>
+        <p class="section-body">Every month, we publish 30 SEO-optimized articles, sharpen your technical SEO, strengthen your Google Business Profile, and structure your content so platforms like <strong>ChatGPT, Claude, Perplexity, and Google's AI Overviews</strong> understand and recommend your facility.</p>
+      </div>
+
+      <div class="reveal">
+        <div class="storage-illo">
+          <div class="storage-illo-bg"></div>
+          <div class="storage-illo-bg2"></div>
+          <div class="storage-illo-card">
+
+            <!-- Dashboard header -->
+            <div class="dash-header">
+              <div class="dash-title-block">
+                <div class="dash-title">AI Visibility Audit</div>
+                <div class="dash-subtitle">yourfacility.com · Next audit: Jun 12, 2026</div>
+              </div>
+              <div class="dash-share-btn">⇪ Share</div>
+            </div>
+
+            <!-- Score row -->
+            <div class="dash-score-row">
+              <div class="dash-score-main">
+                <div class="dash-score-label">AI Score</div>
+                <div class="dash-score-num">87<span>/100</span></div>
+              </div>
+              <div class="dash-check">
+                <div class="dash-check-label">ChatGPT</div>
+                <div class="dash-check-value">Ok</div>
+              </div>
+              <div class="dash-check">
+                <div class="dash-check-label">Claude</div>
+                <div class="dash-check-value">Ok</div>
+              </div>
+              <div class="dash-check">
+                <div class="dash-check-label">Perplexity</div>
+                <div class="dash-check-value">Ok</div>
+              </div>
+              <div class="dash-check">
+                <div class="dash-check-label">Google AI</div>
+                <div class="dash-check-value">Ok</div>
+              </div>
+              <div class="dash-check">
+                <div class="dash-check-label">llms.txt</div>
+                <div class="dash-check-value">Ok</div>
+              </div>
+            </div>
+
+            <!-- Issues table -->
+            <div>
+              <div class="dash-issues-title">Issues by Page</div>
+              <div class="dash-search">Search pages...</div>
+              <div class="dash-table">
+                <div class="dash-table-head">
+                  <div>Page</div>
+                  <div style="text-align:right;">Score</div>
+                  <div style="text-align:right;">Issues</div>
+                </div>
+                <div class="dash-row">
+                  <div class="dash-row-page"><span>/</span>climate-controlled-units</div>
+                  <div class="dash-row-score">92/100</div>
+                  <div class="dash-row-issues">2</div>
+                </div>
+                <div class="dash-row">
+                  <div class="dash-row-page"><span>/</span>unit-sizes-pricing</div>
+                  <div class="dash-row-score">88/100</div>
+                  <div class="dash-row-issues">3</div>
+                </div>
+                <div class="dash-row">
+                  <div class="dash-row-page"><span>/</span>fort-lauderdale-storage</div>
+                  <div class="dash-row-score med">74/100</div>
+                  <div class="dash-row-issues">5</div>
+                </div>
+                <div class="dash-row">
+                  <div class="dash-row-page"><span>/</span>boat-rv-storage</div>
+                  <div class="dash-row-score">85/100</div>
+                  <div class="dash-row-issues">4</div>
+                </div>
+                <div class="dash-row">
+                  <div class="dash-row-page"><span>/</span>moving-tips</div>
+                  <div class="dash-row-score med">68/100</div>
+                  <div class="dash-row-issues">7</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="about-right reveal">
-    <div class="about-stat">
-      <div class="about-stat-num">30+</div>
-      <div class="about-stat-label">SEO articles<br>published monthly</div>
+
+  <!-- Stat band -->
+  <div class="stat-band-wrap">
+    <div class="stat-band-bg"></div>
+    <div class="stat-band">
+      <div class="stat-card">
+        <div class="stat-num">30+</div>
+        <div class="stat-label">Articles Published Monthly</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">250+</div>
+        <div class="stat-label">Keywords Targeted Monthly</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Self-Storage Focused</div>
+      </div>
     </div>
-    <div class="about-stat">
-      <div class="about-stat-num">250</div>
-      <div class="about-stat-label">Long-tail keywords<br>targeted monthly</div>
-    </div>
-    <div class="about-stat">
-      <div class="about-stat-num">AI</div>
-      <div class="about-stat-label">Optimized for<br>modern search</div>
-    </div>
-    <div class="about-stat">
-      <div class="about-stat-num">0</div>
-      <div class="about-stat-label">Long-term<br>contracts required</div>
-    </div>
-    <div class="about-quote">
-      <p>"Self-storage customers don't search like they used to. <span>We make sure they still find you.</span>"</p>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section id="what-we-do">
+  <div class="container">
+    <div class="wwd-grid">
+      <div class="reveal">
+        <span class="section-eyebrow on-color">What We Do</span>
+        <h2 class="section-title light wwd-title">This Is What We Do.</h2>
+        <p class="wwd-body" style="margin-bottom: 16px;">We put self-storage facilities in front of the renters who are searching right now — whether they're typing into Google or asking <strong>ChatGPT, Claude, Perplexity, or Gemini</strong> to recommend a nearby unit.</p>
+        <p class="wwd-body">Every campaign is built for <strong>performance, measurable growth, and AI discoverability.</strong> Real keyword research, real published content, real ranking improvements — month after month.</p>
+      </div>
+
+      <div class="reveal">
+        <div class="phone-illo">
+          <div class="phone-illo-bg"></div>
+          <div class="phone-illo-pixels">
+            <div class="pixel"></div><div class="pixel empty"></div><div class="pixel"></div>
+            <div class="pixel empty"></div><div class="pixel"></div><div class="pixel"></div>
+            <div class="pixel"></div><div class="pixel empty"></div><div class="pixel"></div>
+          </div>
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="phone-header">9:41</div>
+              <div class="phone-search">storage near me in fort lauderdale</div>
+              <div class="phone-ai-result">
+                <div class="phone-ai-label">AI Answer</div>
+                <div class="phone-ai-text">Top-rated self-storage options near you: <strong>Sunset Self Storage</strong> has 24/7 access, climate-controlled units, and excellent reviews.</div>
+              </div>
+              <div class="phone-result-card">
+                <div class="phone-result-title">Sunset Self Storage</div>
+                <div class="phone-result-meta"><span>★ 4.9</span> · 0.8 mi · Open now</div>
+              </div>
+              <div class="phone-result-card">
+                <div class="phone-result-title">Coastal Storage Solutions</div>
+                <div class="phone-result-meta"><span>★ 4.7</span> · 1.2 mi · Open now</div>
+              </div>
+              <div class="phone-result-card">
+                <div class="phone-result-title">Beachside Mini Storage</div>
+                <div class="phone-result-meta"><span>★ 4.6</span> · 2.1 mi · Open now</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- SERVICES -->
 <section id="services">
-  <div class="services-header">
-    <div class="reveal">
-      <p class="section-label">What We Do</p>
-      <h2 class="section-title light">Four pillars.<br><em>One complete system.</em></h2>
+  <div class="container">
+    <div class="services-header reveal">
+      <span class="section-eyebrow">Our System</span>
+      <h2 class="section-title">Four Pillars. <span class="dim">One</span> Complete System.</h2>
+      <p class="section-body">Built for how self-storage customers search today — and how they'll search tomorrow.</p>
     </div>
-    <p class="section-body light reveal" style="max-width: 280px; text-align: right;">Built specifically for the way self-storage customers search today and tomorrow.</p>
-  </div>
-  <div class="services-grid reveal">
-    <div class="service-card">
-      <div class="service-num">01</div>
-      <div class="service-name">Technical & On-Page</div>
-      <p class="service-desc">A deep technical foundation so your facility's website is fully optimized for how modern search engines crawl and rank it.</p>
-      <ul class="service-items">
-        <li>Website SEO audit & structural review</li>
-        <li>Meta title & description optimization</li>
-        <li>Header restructuring (H1–H3)</li>
-        <li>Image optimization</li>
-        <li>Sitemap & indexing verification</li>
-        <li>Ongoing SEO health monitoring</li>
-      </ul>
-    </div>
-    <div class="service-card">
-      <div class="service-num">02</div>
-      <div class="service-name">Local Search Positioning</div>
-      <p class="service-desc">Targeting the local searches that put your facility in front of nearby renters with high intent to book a unit.</p>
-      <ul class="service-items">
-        <li>Local keyword research & targeting</li>
-        <li>"Storage near me" optimization strategy</li>
-        <li>City-based keyword alignment</li>
-        <li>Google Business Profile optimization</li>
-        <li>Local search coverage expansion</li>
-        <li>Competitor keyword tracking</li>
-      </ul>
-    </div>
-    <div class="service-card">
-      <div class="service-num">03</div>
-      <div class="service-name">AI-Optimized Content</div>
-      <p class="service-desc">30 SEO articles published monthly, structured for both Google and the AI-driven search systems renters increasingly rely on.</p>
-      <ul class="service-items">
-        <li>30 articles pre-scheduled monthly</li>
-        <li>250 long-tail keywords targeted monthly</li>
-        <li>Topic & semantic keyword expansion</li>
-        <li>Internal linking improvements</li>
-        <li>Conversational search optimization</li>
-      </ul>
-    </div>
-    <div class="service-card">
-      <div class="service-num">04</div>
-      <div class="service-name">Performance Tracking</div>
-      <p class="service-desc">Full transparency into how your facility's search visibility is changing, with clear monthly reporting.</p>
-      <ul class="service-items">
-        <li>Keyword rank tracking</li>
-        <li>Organic traffic monitoring</li>
-        <li>Search visibility reporting</li>
-        <li>Monthly performance summary</li>
-      </ul>
+
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <h3 class="service-name">Technical &amp; On-Page SEO</h3>
+        <p class="service-desc">A deep technical foundation so your site is fully optimized for how modern search engines crawl and rank it.</p>
+        <ul class="service-items">
+          <li>SEO audit &amp; structural review</li>
+          <li>Meta &amp; header optimization</li>
+          <li>Image &amp; sitemap optimization</li>
+          <li>Ongoing health monitoring</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <h3 class="service-name">Local Search Positioning</h3>
+        <p class="service-desc">Targeting the local searches that put your facility in front of nearby high-intent renters.</p>
+        <ul class="service-items">
+          <li>Local keyword research</li>
+          <li>"Storage near me" optimization</li>
+          <li>Google Business Profile</li>
+          <li>Competitor tracking</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <h3 class="service-name">AI-Optimized Content</h3>
+        <p class="service-desc">30 SEO articles published monthly, structured for both Google and AI-driven search systems.</p>
+        <ul class="service-items">
+          <li>30 articles pre-scheduled</li>
+          <li>250 long-tail keywords</li>
+          <li>Semantic topic expansion</li>
+          <li>Conversational search ready</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <h3 class="service-name">Performance Tracking</h3>
+        <p class="service-desc">Full transparency into how your facility's search visibility is changing, with clear reporting.</p>
+        <ul class="service-items">
+          <li>Keyword rank tracking</li>
+          <li>Organic traffic monitoring</li>
+          <li>Search visibility reports</li>
+          <li>Monthly summaries</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- WEBSITES (secondary offering) -->
-<section id="websites">
-  <div class="reveal">
-    <p class="section-label">Also Available</p>
-    <h2 class="section-title">Custom websites for<br><em>storage facilities.</em></h2>
-    <p class="section-body" style="margin-bottom: 24px;">SEO can only do so much for a slow, outdated, or poorly structured website. For operators who want a stronger digital foundation, we design and build custom websites purpose-built for self-storage — fast, mobile-first, and structured from the ground up to rank.</p>
-    <p class="section-body">Every site is engineered to integrate cleanly with your SEO and AI optimization, so search performance compounds from day one rather than fighting against the site itself.</p>
-    <div class="web-cta-row">
-      <a href="#contact" class="btn-dark">Request a Quote</a>
-      <span class="web-meta">Custom pricing per project</span>
+<!-- SHIFT -->
+<section id="shift">
+  <div class="shift-orange-blob"></div>
+  <div class="container">
+    <div class="shift-grid">
+      <div class="reveal">
+        <span class="section-eyebrow shift-eyebrow">The Shift</span>
+        <h2 class="section-title light shift-title">Google Is Shrinking. <span class="dim">AI Is</span> Exploding.</h2>
+        <p class="section-body light" style="margin-bottom: 16px;">For the first time, Google searches per U.S. user are declining year over year — while AI tools are growing at a rate the search industry has never seen.</p>
+        <p class="section-body light">Renters are still looking for storage. They're just looking in new places. Facilities that show up in both worlds will fill units. The rest won't.</p>
+      </div>
+
+      <div class="shift-stat-cards reveal">
+        <div class="shift-stat down">
+          <div class="shift-stat-trend">↓ Declining</div>
+          <div class="shift-stat-num">−20%</div>
+          <div class="shift-stat-label">Google searches per U.S. user, year over year</div>
+          <div class="shift-stat-source">Source: SparkToro / Datos</div>
+        </div>
+        <div class="shift-stat up">
+          <div class="shift-stat-trend">↑ Growing</div>
+          <div class="shift-stat-num">+81%</div>
+          <div class="shift-stat-label">AI chatbot traffic, year over year</div>
+          <div class="shift-stat-source">Source: OneLittleWeb study</div>
+        </div>
+      </div>
     </div>
   </div>
+</section>
 
-  <div class="web-features reveal">
-    <div class="web-feature">
-      <div class="web-feature-icon">◆</div>
-      <div class="web-feature-title">Built to Rank</div>
-      <div class="web-feature-body">Clean code, fast load times, and a structure that search engines and AI platforms can read clearly.</div>
-    </div>
-    <div class="web-feature">
-      <div class="web-feature-icon">◇</div>
-      <div class="web-feature-title">Mobile-First</div>
-      <div class="web-feature-body">Most storage searches happen on a phone. Every site we build is designed for that reality first.</div>
-    </div>
-    <div class="web-feature">
-      <div class="web-feature-icon">◈</div>
-      <div class="web-feature-title">Conversion-Focused</div>
-      <div class="web-feature-body">Layouts engineered to turn search traffic into rentals — clear unit info, pricing, and contact paths.</div>
-    </div>
-    <div class="web-feature">
-      <div class="web-feature-icon">◊</div>
-      <div class="web-feature-title">SEO-Ready</div>
-      <div class="web-feature-body">Every site is launched with the technical groundwork your SEO program needs to perform from day one.</div>
+<!-- WEBSITES -->
+<section id="websites">
+  <div class="container">
+    <div class="websites-grid">
+      <div class="reveal">
+        <span class="section-eyebrow">Free Design Offer</span>
+        <h2 class="section-title">Custom Websites <span class="dim">for</span> Storage Facilities.</h2>
+        <p class="section-body" style="margin-bottom: 16px;">SEO can only do so much for a slow, outdated, or poorly structured website. We design and build custom sites <strong>purpose-built for self-storage</strong> — fast, mobile-first, structured from the ground up to rank.</p>
+        <p class="section-body" style="margin-bottom: 16px;">Every site is engineered to integrate cleanly with your SEO and AI optimization, so search performance compounds from day one.</p>
+        <p class="section-body"><strong>Get a free custom website design mockup</strong> built specifically for your facility — no commitment, no cost. See what your site could look like before you decide anything.</p>
+
+        <div class="web-features">
+          <div class="web-feature">
+            <div class="web-feature-dot"></div>
+            <div class="web-feature-text">Built to rank</div>
+          </div>
+          <div class="web-feature">
+            <div class="web-feature-dot"></div>
+            <div class="web-feature-text">Mobile-first</div>
+          </div>
+          <div class="web-feature">
+            <div class="web-feature-dot"></div>
+            <div class="web-feature-text">Conversion-focused</div>
+          </div>
+          <div class="web-feature">
+            <div class="web-feature-dot"></div>
+            <div class="web-feature-text">SEO-ready</div>
+          </div>
+        </div>
+
+        <div class="web-cta-row">
+          <a href="#contact" class="btn-orange">Free Custom Website Design →</a>
+          <span class="web-meta">No commitment · No cost</span>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="browser-illo">
+          <div class="browser-illo-shape"></div>
+          <div class="browser-illo-pixels">
+            <div class="pixel"></div><div class="pixel empty"></div><div class="pixel"></div>
+            <div class="pixel empty"></div><div class="pixel"></div><div class="pixel"></div>
+            <div class="pixel"></div><div class="pixel"></div><div class="pixel empty"></div>
+          </div>
+          <div class="browser">
+            <div class="browser-bar">
+              <div class="browser-dot"></div>
+              <div class="browser-dot"></div>
+              <div class="browser-dot"></div>
+              <div class="browser-url">yourstorage.com</div>
+            </div>
+            <div class="browser-content">
+              <div class="browser-hero">
+                <div class="browser-hero-title">Find Your Unit Today</div>
+                <div class="browser-hero-sub">Climate-controlled · 24/7 access · From $89/mo</div>
+              </div>
+              <div class="browser-row">
+                <div class="browser-tile">
+                  <div class="browser-tile-icon"></div>
+                  <div class="browser-tile-line"></div>
+                  <div class="browser-tile-line short"></div>
+                </div>
+                <div class="browser-tile">
+                  <div class="browser-tile-icon"></div>
+                  <div class="browser-tile-line"></div>
+                  <div class="browser-tile-line short"></div>
+                </div>
+                <div class="browser-tile">
+                  <div class="browser-tile-icon"></div>
+                  <div class="browser-tile-line"></div>
+                  <div class="browser-tile-line short"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- PRICING -->
 <section id="pricing">
-  <div class="pricing-header reveal">
-    <p class="section-label">SEO & GEO Pricing</p>
-    <h2 class="section-title light">Simple. Transparent.<br><em>No contracts.</em></h2>
-    <p class="section-body light" style="margin-top: 16px;">One flat monthly rate. Full infrastructure included. Cancel any time without penalty.</p>
-  </div>
-  <div class="pricing-card reveal">
-    <p class="pricing-tag">Monthly Rate</p>
-    <div class="pricing-amount"><sup>$</sup>299</div>
-    <p class="pricing-period">flat monthly rate</p>
-    <div class="pricing-divider"></div>
-    <p class="pricing-desc">Every account receives the full system — technical SEO, local positioning, 30 published articles, AI search optimization, and monthly reporting. No partial packages. No upsells. Everything included, every month.</p>
-    <ul class="pricing-includes">
-      <li>Technical & on-page SEO</li>
-      <li>Google Business Profile</li>
-      <li>Local search positioning</li>
-      <li>"Storage near me" targeting</li>
-      <li>30 articles published monthly</li>
-      <li>250 long-tail keywords targeted</li>
-      <li>AI search optimization</li>
-      <li>Monthly performance reporting</li>
-    </ul>
-    <p class="pricing-note">+ $50 one-time onboarding fee &nbsp;·&nbsp; No long-term contracts &nbsp;·&nbsp; Cancel any time</p>
+  <div class="container">
+    <div class="pricing-header reveal">
+      <span class="section-eyebrow">Pricing</span>
+      <h2 class="section-title">Simple. Transparent. <span class="dim">No</span> Contracts.</h2>
+      <p class="section-body">One flat monthly rate. Full system included. Cancel any time without penalty.</p>
+    </div>
+
+    <div class="pricing-card reveal">
+      <div class="pricing-card-bg"></div>
+      <span class="pricing-badge">★ Everything Included</span>
+      <div class="pricing-price-row">
+        <div class="pricing-amount"><sup>$</sup>299</div>
+        <div class="pricing-period">/ month</div>
+      </div>
+      <p class="pricing-tagline">The full Corvane system — technical SEO, local positioning, 30 published articles, AI search optimization, and monthly reporting. No partial packages. No upsells.</p>
+
+      <ul class="pricing-includes">
+        <li>Technical &amp; on-page SEO</li>
+        <li>Google Business Profile</li>
+        <li>Local search positioning</li>
+        <li>"Storage near me" targeting</li>
+        <li>30 articles published monthly</li>
+        <li>250 long-tail keywords</li>
+        <li>AI search optimization</li>
+        <li>Monthly performance reporting</li>
+      </ul>
+
+      <div class="pricing-footer">
+        <span>$50 one-time onboarding</span>
+        <span>No long-term contracts</span>
+        <span>Cancel any time</span>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- WHY US -->
-<section id="why">
-  <div class="why-header reveal">
-    <p class="section-label">Why Corvane</p>
-    <h2 class="section-title">Built for one industry.<br><em>Yours.</em></h2>
-    <p class="section-body" style="margin-top: 16px;">Most SEO agencies treat self-storage like any other local business. We don't. Every system we run, every keyword we target, every article we write is built specifically for how renters search for storage — and how AI platforms now answer those searches.</p>
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-pixels">
+    <div class="pixel"></div><div class="pixel empty"></div><div class="pixel"></div><div class="pixel"></div>
+    <div class="pixel empty"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel empty"></div>
+    <div class="pixel"></div><div class="pixel"></div><div class="pixel empty"></div><div class="pixel"></div>
   </div>
-  <div class="why-grid reveal">
-    <div class="why-card">
-      <div class="why-icon">◆</div>
-      <div class="why-card-title">Self-Storage Specialists</div>
-      <p class="why-card-body">We work exclusively in self-storage. Our keyword research, content engine, and local strategies are tuned for how renters actually behave — searching by city, by feature, by price, and increasingly through AI tools.</p>
-    </div>
-    <div class="why-card">
-      <div class="why-icon">⌁</div>
-      <div class="why-card-title">SEO + AI in One System</div>
-      <p class="why-card-body">Traditional SEO is no longer enough. We handle both classic search engine optimization and Generative Engine Optimization — making sure your facility ranks on Google and gets recommended by ChatGPT, Perplexity, and Google's AI Overviews.</p>
-    </div>
-    <div class="why-card">
-      <div class="why-icon">◈</div>
-      <div class="why-card-title">No Contracts. No Penalties.</div>
-      <p class="why-card-body">We don't trap operators into long-term agreements. We earn the work month by month. If the results aren't there, you can walk — no cancellation fees, no buyouts, no fine print.</p>
-    </div>
-  </div>
-
-  <div class="why-statement reveal">
-    <div class="why-statement-left">
-      <h3>The way customers find storage is <em>changing fast.</em></h3>
-      <p class="section-body light">A growing share of renters now ask an AI assistant for a recommendation before they ever open Google. Facilities that structure their digital presence for both worlds will fill units. Facilities that don't will lose them — quietly, every month, without ever knowing why.</p>
-    </div>
-    <div class="why-statement-right">
-      <div class="why-point">
-        <div class="why-point-num">01</div>
-        <div class="why-point-text">
-          <strong>Industry-specific keyword targeting</strong>
-          We target the searches that actually drive rentals — by city, by unit size, by feature, by price tier. Not generic local SEO. Self-storage SEO.
-        </div>
+  <div class="container">
+    <div class="cta-grid">
+      <div class="reveal">
+        <h2 class="cta-title">Get your free <span class="dim">AI Visibility</span> audit.</h2>
+        <p class="cta-body">See exactly how your facility shows up across Google, ChatGPT, Claude, Perplexity, and Google's AI Overviews — and what's keeping you invisible. No commitment, no cost. We'll send you the full audit within two business days.</p>
       </div>
-      <div class="why-point">
-        <div class="why-point-num">02</div>
-        <div class="why-point-text">
-          <strong>Content engine that runs itself</strong>
-          30 articles written, scheduled, and published every month. Technical audits run continuously. Reports generate on schedule. You don't manage any of it.
-        </div>
-      </div>
-      <div class="why-point">
-        <div class="why-point-num">03</div>
-        <div class="why-point-text">
-          <strong>Visibility on Google and in AI</strong>
-          Your facility doesn't just rank on Google — it gets recommended by the AI tools renters now use to compare options before they ever call.
-        </div>
+      <div class="cta-buttons reveal">
+        <a href="#contact" class="btn-white">Free AI Audit →</a>
+        <a href="#services" class="btn-ghost-light">See What We Do</a>
       </div>
     </div>
   </div>
@@ -1109,49 +1844,71 @@
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="contact-inner">
-    <p class="section-label reveal" style="color: var(--gold);">Get In Touch</p>
-    <h2 class="section-title light reveal">Ready to fill<br><em>more units?</em></h2>
-    <p class="section-body light reveal" style="margin: 0 auto; text-align: center;">Tell us about your facility. We'll walk you through how Corvane would work for your specific market and answer any questions.</p>
-    <form class="contact-form reveal" onsubmit="handleSubmit(event)">
+  <div class="contact-card reveal">
+    <div class="contact-header">
+      <span class="section-eyebrow">Claim Your Free Offer</span>
+      <h2 class="section-title">Get Your Free <span class="dim">AI Visibility</span> Audit.</h2>
+      <p class="section-body">Tell us about your facility and we'll send you a free AI Visibility Audit — or a free custom website design mockup — within two business days. No commitment. No cost. No pushy follow-ups.</p>
+    </div>
+
+    <form
+      class="contact-form"
+      name="corvane-inquiry"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      onsubmit="handleSubmit(event)"
+    >
+      <input type="hidden" name="form-name" value="corvane-inquiry">
+      <p style="display:none;">
+        <label>Don't fill this out: <input name="bot-field"></label>
+      </p>
+
       <div class="form-row">
         <div class="form-field">
-          <input type="text" placeholder="Your Name" required>
+          <label>Your Name</label>
+          <input type="text" name="name" placeholder="Jane Doe" required>
         </div>
         <div class="form-field">
-          <input type="email" placeholder="Email Address" required>
+          <label>Email Address</label>
+          <input type="email" name="email" placeholder="jane@yourfacility.com" required>
         </div>
       </div>
       <div class="form-row">
         <div class="form-field">
-          <input type="text" placeholder="Facility Name">
+          <label>Website Domain</label>
+          <input type="text" name="website" placeholder="yourfacility.com">
         </div>
         <div class="form-field">
-          <input type="text" placeholder="City / State">
+          <label>Phone Number</label>
+          <input type="tel" name="phone" placeholder="(555) 123-4567">
         </div>
       </div>
       <div class="form-field">
-        <select required>
-          <option value="">— I'M INTERESTED IN —</option>
-          <option value="seo">SEO & AI Search ($299/mo)</option>
-          <option value="website">Custom Website Build</option>
-          <option value="both">Both</option>
+        <label>What I Want</label>
+        <select name="interest" required>
+          <option value="">Select an option</option>
+          <option value="audit">Free AI Visibility Audit</option>
+          <option value="website-design">Free Custom Website Design</option>
+          <option value="both-free">Both free offers</option>
+          <option value="seo">SEO &amp; AI Search service ($299/month)</option>
           <option value="learn">Just learning more</option>
         </select>
       </div>
       <div class="form-field">
-        <textarea rows="5" placeholder="Tell us about your facility and what you're looking for..."></textarea>
+        <label>Tell Us More (Optional)</label>
+        <textarea name="message" rows="4" placeholder="Anything about your facility, current website, or goals..."></textarea>
       </div>
-      <button type="submit" class="form-submit">Submit Inquiry</button>
+      <button type="submit" class="form-submit">Claim AI Visibility Audit →</button>
     </form>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Corvane<span>.</span></div>
-  <p class="footer-copy">&copy; 2026 Corvane Systems. All rights reserved.</p>
-  <p class="footer-tagline">SEO & AI Search for Self-Storage</p>
+  <div class="footer-logo">Corvane<span></span></div>
+  <p class="footer-copy">&copy; 2026 Corvane Systems</p>
+  <p class="footer-tagline">SEO &amp; AI Search for Self-Storage</p>
 </footer>
 
 <script>
@@ -1160,35 +1917,51 @@
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
         observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
 
-  // Stagger service cards
-  document.querySelectorAll('.service-card').forEach((card, i) => {
-    card.style.transitionDelay = `${i * 0.08}s`;
-  });
-
-  // Form submit
+  // Netlify form submission
   function handleSubmit(e) {
     e.preventDefault();
-    const btn = e.target.querySelector('.form-submit');
-    btn.textContent = 'Inquiry Sent';
-    btn.style.background = '#2A5C2A';
-    btn.style.color = '#fff';
-    btn.disabled = true;
-  }
+    const form = e.target;
+    const btn = form.querySelector('.form-submit');
+    const originalText = btn.textContent;
 
-  // Nav background on scroll
-  window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    nav.style.background = window.scrollY > 50
-      ? 'rgba(10,10,10,0.98)'
-      : 'rgba(10,10,10,0.92)';
-  });
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    const formData = new FormData(form);
+    const body = new URLSearchParams(formData).toString();
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body
+    })
+    .then((response) => {
+      if (response.ok) {
+        btn.textContent = '✓ Inquiry Sent — We\'ll Be In Touch';
+        btn.style.background = '#22C55E';
+        form.reset();
+      } else {
+        throw new Error('Submission failed');
+      }
+    })
+    .catch(() => {
+      btn.textContent = 'Something Went Wrong — Try Again';
+      btn.style.background = '#EF4444';
+      btn.disabled = false;
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = '';
+      }, 4000);
+    });
+  }
 </script>
 </body>
+</html>
 </html>
