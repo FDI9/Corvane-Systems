@@ -183,10 +183,10 @@
     },
     {
       "@type": "Question",
-      "name": "How many articles do you publish per month?",
+      "name": "How often do you publish content?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "We publish 30 SEO-optimized articles per month, structured for both Google ranking and AI citation — covering local intent, transactional intent, and informational queries renters use to find storage."
+        "text": "We publish multiple SEO-optimized articles every week, structured for both Google ranking and AI citation — covering local intent, transactional intent, and informational queries renters use to find storage."
       }
     }
   ]
@@ -759,7 +759,9 @@
   }
   .stat-band-bg {
     position: absolute;
-    bottom: 0; left: 0; right: 0;
+    bottom: 0;
+    /* full-bleed: reach both edges of the screen regardless of section padding */
+    left: calc(50% - 50vw); right: calc(50% - 50vw);
     height: 60%;
     background: var(--green);
   }
@@ -792,6 +794,15 @@
   .stat-label {
     font-size: 15px; font-weight: 700;
     letter-spacing: -0.01em;
+  }
+  /* Text stat (first card only): smaller type, same row height as the number stats */
+  .stat-num.stat-num-text {
+    font-size: clamp(24px, 2.5vw, 32px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    min-height: clamp(48px, 5vw, 64px);
+    display: flex; align-items: center; justify-content: center;
+    text-wrap: balance;
   }
 
   /* ── WHAT WE DO (green section) ────────────────────────── */
@@ -1012,6 +1023,19 @@
     color: var(--blue);
     font-weight: 800;
     flex-shrink: 0;
+  }
+
+  /* Pillar cards share rows, so the bullet lists start at the same height in every card */
+  @supports (grid-template-rows: subgrid) {
+    .service-card {
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: span 4;
+      row-gap: 0;
+      align-content: start;
+    }
+    .service-num { justify-self: start; }
+    .service-items { margin-top: 0; align-self: start; }
   }
 
   /* ── SHIFT / DATA SECTION ──────────────────────────────── */
@@ -1497,6 +1521,100 @@
     transform: translateY(-1px);
   }
 
+  /* ── BOOKING POPUP (after form submit) ─────────────────── */
+  .book-overlay {
+    position: fixed; inset: 0; z-index: 1000;
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px;
+    background: rgba(15,23,42,0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0; visibility: hidden;
+    transition: opacity 0.25s, visibility 0s 0.25s;
+  }
+  .book-overlay.open { opacity: 1; visibility: visible; transition: opacity 0.25s; }
+  .book-modal {
+    position: relative;
+    width: 100%; max-width: 720px;
+    max-height: calc(100vh - 40px); overflow-y: auto;
+    background: var(--white);
+    border-radius: 16px;
+    padding: 32px 32px 20px;
+    text-align: center;
+    box-shadow: 0 24px 64px rgba(15,23,42,0.35);
+    transform: translateY(12px) scale(0.98);
+    transition: transform 0.25s;
+  }
+  .book-overlay.open .book-modal { transform: none; }
+  .book-close {
+    position: absolute; top: 12px; right: 12px;
+    width: 40px; height: 40px;
+    border: none; border-radius: 50%;
+    background: transparent; color: rgba(15,23,42,0.45);
+    font-size: 26px; line-height: 1; cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .book-close:hover { background: rgba(15,23,42,0.06); color: var(--ink); }
+  .book-check {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 30px; height: 30px; margin-right: 10px;
+    border-radius: 50%;
+    background: var(--green-bg); color: var(--green-dk);
+    font-size: 16px; font-weight: 800;
+    vertical-align: 3px;
+  }
+  .book-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 24px; font-weight: 800;
+    letter-spacing: -0.02em; line-height: 1.2;
+    color: var(--ink);
+    margin: 0 40px 8px;
+  }
+  .book-body {
+    font-size: 15px; line-height: 1.55;
+    color: rgba(15,23,42,0.7);
+    max-width: 480px;
+    margin: 0 auto 16px;
+  }
+  .book-calendar {
+    position: relative;
+    height: 660px;
+    border: 1px solid rgba(15,23,42,0.08);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .book-calendar iframe { width: 100%; height: 100%; border: 0; }
+  .book-loading {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; color: rgba(15,23,42,0.5);
+  }
+  .book-fallback {
+    margin-top: 12px;
+    font-size: 13px; color: rgba(15,23,42,0.5);
+  }
+  .book-fallback a { color: var(--blue); font-weight: 600; }
+  .book-skip {
+    margin-top: 4px;
+    background: none; border: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; font-weight: 600;
+    color: rgba(15,23,42,0.5);
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+  .book-skip:hover { color: var(--ink); }
+  @media (max-width: 600px) {
+    .book-overlay { padding: 0; }
+    .book-modal {
+      max-height: 100vh; height: 100%;
+      border-radius: 0;
+      padding: 28px 12px 16px;
+    }
+    .book-title { font-size: 20px; }
+    .book-body { font-size: 14px; }
+  }
+
   /* ── FOOTER ────────────────────────────────────────────── */
   footer {
     background: var(--ink);
@@ -1607,19 +1725,120 @@
     .shift-stat.up { transform: translateY(0); }
     .geo-green-left, .geo-green-right { display: none; }
   }
+  /* Stop any sideways scroll and let grid columns shrink to the screen */
+  html { overflow-x: clip; -webkit-text-size-adjust: 100%; }
+  .about-grid > *, .wwd-grid > *, .shift-grid > *, .websites-grid > *,
+  .cta-grid > *, .services-grid > *, .form-row > * { min-width: 0; }
+  a, button { -webkit-tap-highlight-color: transparent; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* ── PHONES ────────────────────────────────────────────── */
   @media (max-width: 600px) {
-    section { padding: 70px 5vw; }
-    #home { padding: 80px 5vw 140px; }
-    .pricing-card,
-    .contact-card { padding: 40px 28px; }
+    /* Nav */
+    nav { padding: 10px 16px; gap: 12px; }
+    .nav-logo { font-size: 22px; min-height: 44px; align-items: center; }
+    .nav-right { gap: 4px; }
+    .nav-login { display: inline-flex; align-items: center; min-height: 44px; padding: 0 10px; }
+    .nav-cta { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; font-size: 14px; }
+
+    /* Section rhythm and type */
+    section { padding: 56px 20px; }
+    #explainer-video { padding: 48px 20px !important; }
+    .value-strip { padding: 28px 20px; }
+    .section-title, .cta-title { font-size: 34px; line-height: 1.05; margin-bottom: 18px; }
+    .section-body, .wwd-body, .cta-body { font-size: 16px; line-height: 1.6; }
+    .about-grid, .wwd-grid, .shift-grid, .websites-grid, .cta-grid { gap: 36px; }
+    .about-grid { margin-bottom: 48px; }
+
+    /* Hero */
+    #home { padding: 48px 20px 72px; min-height: 0; }
+    .hero-title { font-size: clamp(40px, 12.5vw, 52px); margin-bottom: 22px; }
+    .hero-offer { font-size: 17px; margin-bottom: 28px; }
+    .geo-pixels-tl { top: 16px; left: 12px; transform: scale(0.7); transform-origin: top left; }
+    .geo-pixels-br { bottom: 16px; right: 12px; transform: scale(0.7); transform-origin: bottom right; }
+
+    /* Buttons: full width, easy to tap */
+    .hero-actions, .web-cta-row { flex-direction: column; align-items: stretch; }
+    .btn-white, .btn-ghost-light, .btn-orange {
+      justify-content: center; text-align: center;
+      width: 100%; min-height: 54px;
+      padding: 16px 20px; font-size: 16px;
+    }
+    .btn-ghost-light { display: inline-flex; align-items: center; }
+    .web-meta { text-align: center; }
+
+    /* Value strip: two tidy columns */
+    .value-strip-inner { grid-template-columns: 1fr 1fr; gap: 14px 12px; }
+    .value-item { font-size: 13px; gap: 10px; line-height: 1.3; }
+    .value-item-icon { width: 32px; height: 32px; font-size: 14px; }
+
+    /* Audit dashboard mock-up */
+    .storage-illo { aspect-ratio: auto; }
+    .storage-illo-card { height: auto; padding: 18px 16px 16px; gap: 14px; }
+    .dash-score-row { grid-template-columns: 1fr 1fr 1fr; gap: 12px 8px; padding: 12px; }
+    .dash-score-main { grid-column: 1 / -1; flex-direction: row; align-items: baseline; gap: 10px; }
+
+    /* Stat band: one compact row instead of three tall cards */
+    .stat-band-wrap { padding-top: 0; }
+    .stat-band { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .stat-card { padding: 20px 6px; border-radius: 12px; }
+    .stat-num { font-size: 30px; margin-bottom: 6px; }
+    .stat-num.stat-num-text { font-size: 14px; line-height: 1.07; letter-spacing: -0.01em; min-height: 30px; }
+    .stat-label { font-size: 11px; line-height: 1.3; }
+
+    /* Illustrations sized for a phone */
+    .phone-illo { max-width: 320px; }
+    .browser-illo { max-width: 100%; }
+
+    /* Cards */
+    .services-grid { grid-template-columns: 1fr; gap: 14px; }
+    .service-card { padding: 26px 22px; }
+    .service-desc { font-size: 15px; }
+    .service-items li { font-size: 14px; }
+    .shift-stat-cards { gap: 10px; }
+    .shift-stat { padding: 20px 14px; }
+    .shift-stat-num { font-size: 34px; }
+    .web-features { grid-template-columns: 1fr; gap: 10px; }
+    .web-feature-text { font-size: 14px; }
+
+    /* Pricing */
+    .pricing-header { margin-bottom: 32px; }
+    .pricing-card { padding: 32px 22px; }
     .pricing-includes { grid-template-columns: 1fr; }
+    .pricing-includes li { font-size: 15px; }
+    .pricing-footer { flex-direction: column; gap: 8px; font-size: 14px; }
+
+    /* Contact form: 16px fields stop iPhones zooming in on tap */
+    .contact-card { padding: 32px 20px; }
+    .contact-header { margin-bottom: 28px; }
     .form-row { grid-template-columns: 1fr; }
-    .web-features { grid-template-columns: 1fr; }
-    .services-grid { grid-template-columns: 1fr; }
-    .value-strip-inner { grid-template-columns: 1fr; }
+    .form-field label { font-size: 14px; }
+    .form-field input, .form-field select, .form-field textarea { font-size: 16px; min-height: 52px; }
+    .form-submit { min-height: 56px; font-size: 17px; }
+
+    /* Booking popup */
+    .book-modal { max-height: 100dvh; }
+    .book-close { width: 44px; height: 44px; top: 8px; right: 8px; }
+    .book-calendar { height: min(660px, calc(100dvh - 190px)); min-height: 420px; }
+    .book-fallback a { display: inline-block; padding: 8px 0; }
+
+    .cta-pixels { display: none; }
+
+    /* Footer */
     footer .footer-contact { grid-template-columns: 1fr; text-align: center; gap: 20px; }
     footer .footer-contact-left { align-items: center; }
     footer .footer-bottom { flex-direction: column; text-align: center; }
+    .footer-contact-email { font-size: 15px; max-width: 100%; overflow-wrap: anywhere; }
+  }
+  @media (max-width: 360px) {
+    .nav-login { display: none; }
+    .section-title, .cta-title { font-size: 30px; }
+    .hero-offer strong { white-space: normal; }
+    .stat-num { font-size: 26px; }
+    .stat-num.stat-num-text { font-size: 13px; line-height: 1; min-height: 26px; }
   }
 </style>
 <!-- Meta Pixel -->
@@ -1697,6 +1916,7 @@
     <div style="position: relative; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(15,23,42,0.18);">
       <video
         controls
+        playsinline
         preload="metadata"
         poster="/explainer-poster.jpg"
         style="width: 100%; display: block; border-radius: 16px;"
@@ -1737,7 +1957,7 @@
         <span class="section-eyebrow">Our Mission</span>
         <h2 class="section-title">We Make Self-Storage <span class="dim">Visible Across</span> AI &amp; Search.</h2>
         <p class="section-body" style="margin-bottom: 16px;">Corvane Systems is a specialized SEO and AI search agency built exclusively for the self-storage industry. We help facility operators rank higher in local search, dominate "storage near me" queries, and get recommended by the AI tools more renters use every month to find a unit.</p>
-        <p class="section-body">Every month, we publish 30 SEO-optimized articles, sharpen your technical SEO, strengthen your Google Business Profile, and structure your content so platforms like <strong>ChatGPT, Claude, Perplexity, and Google's AI Overviews</strong> understand and recommend your facility.</p>
+        <p class="section-body">Every week, we publish multiple SEO-optimized articles, sharpen your technical SEO, strengthen your Google Business Profile, and structure your content so platforms like <strong>ChatGPT, Claude, Perplexity, and Google's AI Overviews</strong> understand and recommend your facility.</p>
       </div>
 
       <div class="reveal">
@@ -1832,8 +2052,8 @@
     <div class="stat-band-bg"></div>
     <div class="stat-band">
       <div class="stat-card">
-        <div class="stat-num">30+</div>
-        <div class="stat-label">Articles Published Monthly</div>
+        <div class="stat-num stat-num-text">AI &amp; SEO Optimized</div>
+        <div class="stat-label">Articles Published Weekly</div>
       </div>
       <div class="stat-card">
         <div class="stat-num">250+</div>
@@ -1931,9 +2151,9 @@
       <div class="service-card">
         <div class="service-num">03</div>
         <h3 class="service-name">AI-Optimized Content</h3>
-        <p class="service-desc">30 SEO articles published monthly, structured for both Google and AI-driven search systems.</p>
+        <p class="service-desc">Optimized articles published weekly, structured for both Google and AI-driven search systems.</p>
         <ul class="service-items">
-          <li>30 articles pre-scheduled</li>
+          <li>Articles pre-scheduled</li>
           <li>250 long-tail keywords</li>
           <li>Semantic topic expansion</li>
           <li>Conversational search ready</li>
@@ -2082,14 +2302,14 @@
         <div class="pricing-amount"><sup>$</sup>299</div>
         <div class="pricing-period">/ month</div>
       </div>
-      <p class="pricing-tagline">The full Corvane system — technical SEO, local positioning, 30 published articles, AI search optimization, and monthly reporting. No partial packages. No upsells.</p>
+      <p class="pricing-tagline">The full Corvane system — technical SEO, local positioning, weekly published articles, AI search optimization, and monthly reporting. No partial packages. No upsells.</p>
 
       <ul class="pricing-includes">
         <li>Technical &amp; on-page SEO</li>
         <li>Google Business Profile</li>
         <li>Local search positioning</li>
         <li>"Storage near me" targeting</li>
-        <li>30 articles published monthly</li>
+        <li>Articles published weekly</li>
         <li>250 long-tail keywords</li>
         <li>AI search optimization</li>
         <li>Monthly performance reporting</li>
@@ -2206,6 +2426,18 @@
   </div>
 </footer>
 
+<!-- BOOKING POPUP (shown after a successful form submit) -->
+<div class="book-overlay" id="bookOverlay" aria-hidden="true">
+  <div class="book-modal" role="dialog" aria-modal="true" aria-labelledby="bookTitle">
+    <button type="button" class="book-close" aria-label="Close" onclick="closeBooking()">&times;</button>
+    <h2 class="book-title" id="bookTitle"><span class="book-check" aria-hidden="true">&#10003;</span>Got it. Your request is in.</h2>
+    <p class="book-body">Choose a time below and we'll walk you through your audit, showing you exactly what we found and how to fix it.</p>
+    <div class="book-calendar" id="bookCalendar">
+      <p class="book-loading">Loading calendar...</p>
+    </div>
+    <p class="book-fallback">Calendar not loading? <a href="https://calendly.com/admin-corvanesystems/corvane-systems-review-call" target="_blank" rel="noopener">Open it in a new tab</a>.</p>  </div>
+</div>
+
 <script>
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
@@ -2218,6 +2450,46 @@
     });
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
+
+  // Booking popup shown after a successful form submit
+  const bookOverlay = document.getElementById('bookOverlay');
+  function openBooking() {
+    bookOverlay.classList.add('open');
+    bookOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    bookOverlay.querySelector('.book-close').focus();
+    loadCalendar();
+  }
+  // Calendly inline calendar, loaded only once someone submits the form
+  const CALENDLY_URL = 'https://calendly.com/admin-corvanesystems/corvane-systems-review-call?hide_gdpr_banner=1';
+  let calendarLoaded = false;
+  function loadCalendar() {
+    if (calendarLoaded) return;
+    calendarLoaded = true;
+    const parent = document.getElementById('bookCalendar');
+    const init = () => {
+      parent.innerHTML = '';
+      Calendly.initInlineWidget({ url: CALENDLY_URL, parentElement: parent });
+    };
+    if (window.Calendly) return init();
+    const s = document.createElement('script');
+    s.src = 'https://assets.calendly.com/assets/external/widget.js';
+    s.async = true;
+    s.onload = init;
+    s.onerror = () => { calendarLoaded = false; };
+    document.head.appendChild(s);
+  }
+  function closeBooking() {
+    bookOverlay.classList.remove('open');
+    bookOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  bookOverlay.addEventListener('click', (e) => {
+    if (e.target === bookOverlay) closeBooking();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && bookOverlay.classList.contains('open')) closeBooking();
+  });
 
   // Netlify form submission
   function handleSubmit(e) {
@@ -2254,6 +2526,7 @@
         btn.textContent = '✓ Inquiry Sent — We\'ll Be In Touch';
         btn.style.background = '#22C55E';
         form.reset();
+        openBooking();
       } else {
         throw new Error('Submission failed');
       }
